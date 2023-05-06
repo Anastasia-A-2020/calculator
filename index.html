@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <section class="calculator">
+      <form action="" class="calculatorForm" name="calcForm">
+        <ul class="calculatorForm__list">
+          <li class="calculatorForm__item">
+            <label class="checkbox style-h">
+              <input
+                id="visitInOfficeCheckbox"
+                type="checkbox"
+                name="visitInOffice"
+              />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body">
+                Вы готовы приехать лично на подачу документов?
+              </div>
+            </label>
+          </li>
+
+          <li class="calculatorForm__item">
+            <label class="checkbox style-h">
+              <input
+                id="getCardInOfficeCheckbox"
+                type="checkbox"
+                name="getCardInOffice"
+                required
+              />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body">
+                Вам нужна услуга "Получение карты в офисе"?
+              </div>
+            </label>
+          </li>
+
+          <li class="calculatorForm__item">
+            <label class="checkbox style-h">
+              <input
+                id="hasBlikCheckbox"
+                type="checkbox"
+                name="hasBlik"
+                required
+              />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body">
+                У Вас есть доступ к платежной системе BLIK? Готовы сделать
+                предоплату, получив при этом скидку минус 15 от стоимости карты?
+              </div>
+            </label>
+          </li>
+
+          <li class="calculatorForm__item">
+            <label class="checkbox style-h">
+              <input
+                id="expeditedClearanceCheckbox"
+                type="checkbox"
+                name="expeditedClearance"
+                required
+              />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body">Вам нужно ускоренное оформление?</div>
+            </label>
+          </li>
+
+          <li class="calculatorForm__item">
+            <label for="getFinishCard" class="select"
+              >Выберите способ получения карты:
+              <select
+                class="getFinishCard"
+                id="getFinishCard"
+                name="getFinishCard"
+              >
+                <option value="0">
+                  свой адрес (с личным получение заказного письма)
+                </option>
+                <option value="25" selected>получение в офисе</option>
+                <option value="75">
+                  пересылка по Польше (без необходимости личного получения)
+                </option>
+                <option value="125">пересылка международная (кроме РФ)</option>
+                <option value="180">пересылка в РФ</option>
+              </select>
+            </label>
+            <!-- <label class="ownAdress">
+              Введите адрес доставки:
+              <textarea
+                class="textareaOwnAdress"
+                id="textareaOwnAdress"
+                name="textareaOwnAdress"
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+                title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number."
+                rows="7"
+                placeholder="Enter your address..."
+              ></textarea>
+            </label> -->
+          </li>
+        </ul>
+
+        <label id="totalPrice" name="totalPrice"
+          >Стоимость карты:
+          <input
+            class="calculatorForm__price"
+            id="totalPriceValue"
+            type="text"
+            readonly
+        /></label>
+
+        <button type="submit" class="form__btn-sabmit">Отправить</button>
+      </form>
+    </section>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
