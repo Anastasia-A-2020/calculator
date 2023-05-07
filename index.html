@@ -84,18 +84,18 @@
             <div>
               <label class="checkbox style-g chooseCode">
                 <input id="" type="radio" name="getCode" value="75" />
-                <div class="checkbox__checkmark"></div>
+                <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Короткий Код 95</div>
               </label>
               <label class="checkbox style-g chooseCode">
                 <input id="" type="radio" name="getCode" value="90" />
-                <div class="checkbox__checkmark"></div>
+                <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Длинный Код 95</div>
               </label>
               <label class="checkbox style-g chooseCode">
                 <input id="" type="radio" name="getCode" value="0" />
-                <div class="checkbox__checkmark"></div>
-                <div class="checkbox__body">Код 95 не требуется</div>
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Код 95 НЕ нужен</div>
               </label>
             </div>
             <div>
@@ -154,16 +154,21 @@
           </li>
         </ul>
 
-        <label id="totalPrice" name="totalPrice"
-          >Стоимость карты:
-          <input
-            class="calculatorForm__price"
-            id="totalPriceValue"
-            type="text"
-            readonly
-        /></label>
+        <div class="form__footer">
+          <label
+            id="totalPrice"
+            name="totalPrice"
+            class="calculatorForm__priceLabel"
+            >итоговая Стоимость карты:
+            <input
+              class="calculatorForm__price"
+              id="totalPriceValue"
+              type="text"
+              readonly
+          /></label>
 
-        <button type="submit" class="form__btn-sabmit">Отправить</button>
+          <button type="submit" class="form__btn-sabmit">Отправить</button>
+        </div>
       </form>
     </section>
     <script src="./js/index.js"></script>

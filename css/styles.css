@@ -63,11 +63,9 @@ img{
   min-width: 480px;
   margin-right: auto;
   margin-left: auto;
-  border: 1px dashed darkslategray;
   border-radius: 4px;
   padding: 1.25%;
-  font-family:  sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
  
   color: var(--main-text-color-light);
@@ -111,12 +109,12 @@ img{
 }
 
 .deliveryMethod{
+  margin-bottom: 1.25%;
   font-size: 18px;
 }
 
 .textareaForOwnAdressLabel{
   display: block;
-  margin-top: 1.025%;
   margin-bottom: 1.25%;
 }
 
@@ -127,19 +125,6 @@ img{
   font-size: 18px;
   resize: none;
 }
-
-.form__btn-sabmit{
-  margin-top: 20px;
-  display: block;
-  padding: 1.25%;  
-  cursor: pointer;
-}
-
-.calculatorForm__price{
-  padding: 5px;
-  font-size: 25px;
-}
-
 
 /* STYLE G */
 
@@ -186,6 +171,11 @@ img{
   transition: background-color 0.25s ease;
   border-radius: 4px;
 }
+.checkbox.style-g .checkbox__checkmark.radio{
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
 .checkbox.style-g .checkbox__checkmark:after {
   content: "";
   position: absolute;
@@ -194,11 +184,23 @@ img{
   width: 15px;
   height: 25px;
   border: solid var(--accent-text-color);
-  border-width: 0 4px 4px 0;
+  border-width: 0 4px 4px 0; /*!!!!!!!!!!!!!*/
   transform: rotate(45deg);
   opacity: 0;
-  transition: opacity 0.25s ease, left 0.25s ease;
+  transition: opacity 0.25s ease, left 0.25s ease; 
 }
+
+.checkbox.style-g .checkbox__checkmark.radio:after{/*my styles*/
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  border-width: 3px;
+  background-color:var(--accent-text-color) ;
+  transform: translate(-30%, -50%);
+}
+
 .checkbox.style-g .checkbox__body {
   color: var(--main-text-color-light);
   line-height: 1.6;
@@ -209,4 +211,39 @@ img{
   margin-right: 20px;
 }
 
-/* кнопки радио сделать круглыми */
+/* footer */
+
+.form__footer{
+  display: grid;
+  grid-template-columns:  2fr 1fr;
+}
+
+.form__btn-sabmit{
+  display: block;
+  border-radius: 4px;
+  padding: 1.25%; 
+  text-transform: uppercase; 
+  cursor: pointer;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+
+.form__btn-sabmit:hover,
+.form__btn-sabmit:focus{
+  background-color: var(--accent-bg-color);
+  color: var(--main-text-color-light);
+}
+
+.calculatorForm__price{
+  border-radius: 4px;
+  text-align: center;
+  padding: 5px;
+  font-size: 25px;
+  background-color: var(--accent-text-color);
+  color: var(--main-text-color-light);
+
+  max-width: 250px;
+}
+
+.calculatorForm__priceLabel{
+  text-transform: uppercase;
+}
