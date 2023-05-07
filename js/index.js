@@ -19,7 +19,7 @@ const refs = {
 
 const calculatorForm = document.querySelector(".calculatorForm");
 const totalPriceValue = document.querySelector("#totalPriceValue");
-totalPriceValue.value = `${BASE_COST}zl`;
+totalPriceValue.value = `${BASE_COST + +e}zl`;
 
 calculatorForm.addEventListener("change", onChangeInputValue);
 calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
@@ -95,4 +95,4 @@ function onChangeInputValue(event) {
 // уведомление, что уточним адрес после готовности карты
 // свой адресс - выводим поле для ввода адреса (индекс, город, улица, дом, квартира)
 
-//отправить ссылку на калк Сергею
+//отправить ссылку на калк Сергею +++

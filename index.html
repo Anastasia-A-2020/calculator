@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
@@ -12,7 +18,7 @@
       <form action="" class="calculatorForm" name="calcForm">
         <ul class="calculatorForm__list">
           <li class="calculatorForm__item">
-            <label class="checkbox style-h">
+            <label class="checkbox style-g">
               <input
                 id="visitInOfficeCheckbox"
                 type="checkbox"
@@ -26,7 +32,7 @@
           </li>
 
           <li class="calculatorForm__item">
-            <label class="checkbox style-h">
+            <label class="checkbox style-g">
               <input
                 id="getCardInOfficeCheckbox"
                 type="checkbox"
@@ -41,7 +47,7 @@
           </li>
 
           <li class="calculatorForm__item">
-            <label class="checkbox style-h">
+            <label class="checkbox style-g">
               <input
                 id="hasBlikCheckbox"
                 type="checkbox"
@@ -57,16 +63,55 @@
           </li>
 
           <li class="calculatorForm__item">
-            <label class="checkbox style-h">
+            <label class="checkbox style-g">
               <input
                 id="expeditedClearanceCheckbox"
                 type="checkbox"
                 name="expeditedClearance"
                 required
+                checked
+                readonly
               />
               <div class="checkbox__checkmark"></div>
               <div class="checkbox__body">Вам нужно ускоренное оформление?</div>
             </label>
+          </li>
+
+          <li class="calculatorForm__item">
+            <div class="checkbox__body">
+              Одновременно с картой мне требуется:
+            </div>
+            <div>
+              <label class="checkbox style-g chooseCode">
+                <input id="" type="radio" name="getCode" value="75" />
+                <div class="checkbox__checkmark"></div>
+                <div class="checkbox__body">Короткий Код 95</div>
+              </label>
+              <label class="checkbox style-g chooseCode">
+                <input id="" type="radio" name="getCode" value="90" />
+                <div class="checkbox__checkmark"></div>
+                <div class="checkbox__body">Длинный Код 95</div>
+              </label>
+              <label class="checkbox style-g chooseCode">
+                <input id="" type="radio" name="getCode" value="0" />
+                <div class="checkbox__checkmark"></div>
+                <div class="checkbox__body">Код 95 не требуется</div>
+              </label>
+            </div>
+            <div>
+              <label class="checkbox style-g category-CE">
+                <input
+                  id="expeditedClearanceCheckbox"
+                  type="checkbox"
+                  name="category-CE"
+                  value="100"
+                />
+                <div class="checkbox__checkmark"></div>
+                <div class="checkbox__body">
+                  Трудоустройство водителем кат. СЕ
+                </div>
+              </label>
+            </div>
           </li>
 
           <li class="calculatorForm__item">
@@ -77,15 +122,15 @@
                 id="getFinishCard"
                 name="getFinishCard"
               >
-                <option value="0">
+                <option value="0" selected>
                   свой адрес (с личным получение заказного письма)
                 </option>
-                <option value="25" selected>получение в офисе</option>
+                <option value="25">получение в офисе</option>
                 <option value="75">
                   пересылка по Польше (без необходимости личного получения)
                 </option>
                 <option value="125">пересылка международная (кроме РФ)</option>
-                <option value="180">пересылка в РФ</option>
+                <option value="200">пересылка в РФ</option>
               </select>
             </label>
             <!-- <label class="ownAdress">
