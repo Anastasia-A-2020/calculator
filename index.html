@@ -46,7 +46,7 @@
             </label>
           </li>
 
-          <li class="calculatorForm__item">
+          <li class="calculatorForm__item" id="hasBlik">
             <label class="checkbox style-g">
               <input
                 id="hasBlikCheckbox"
@@ -115,25 +115,31 @@
           </li>
 
           <li class="calculatorForm__item">
-            <label for="getFinishCard" class="select"
+            <label for="deliveryMethod" class="select"
               >Выберите способ получения карты:
               <select
-                class="getFinishCard"
-                id="getFinishCard"
-                name="getFinishCard"
+                class="deliveryMethod"
+                id="deliveryMethod"
+                name="deliveryMethod"
               >
-                <option value="0" selected>
+                <option value="0" data-addres="ownAddres" selected>
                   свой адрес (с личным получение заказного письма)
                 </option>
-                <option value="25">получение в офисе</option>
-                <option value="75">
+                <option value="25" data-addres="getInOffice">
+                  получение в офисе
+                </option>
+                <option value="75" data-addres="shippmentInPoland">
                   пересылка по Польше (без необходимости личного получения)
                 </option>
-                <option value="125">пересылка международная (кроме РФ)</option>
-                <option value="200">пересылка в РФ</option>
+                <option value="125" data-addres="shipmentInternational">
+                  пересылка международная (кроме РФ)
+                </option>
+                <option value="200" data-addres="shipmenttoTheRF">
+                  пересылка в РФ
+                </option>
               </select>
             </label>
-            <!-- <label class="ownAdress">
+            <label class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
               Введите адрес доставки:
               <textarea
                 class="textareaOwnAdress"
@@ -144,7 +150,7 @@
                 rows="7"
                 placeholder="Enter your address..."
               ></textarea>
-            </label> -->
+            </label>
           </li>
         </ul>
 

@@ -52,18 +52,20 @@ img{
   height: auto;
 }
 
+
+
 .calculator{
   background-color: var(--dark-bg-color);
 }
 
 .calculatorForm{
-  max-width: 1200px;
+  max-width: 1154px;
   min-width: 480px;
   margin-right: auto;
   margin-left: auto;
   border: 1px dashed darkslategray;
   border-radius: 4px;
-  padding: 10px;
+  padding: 1.25%;
   font-family:  sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -73,6 +75,30 @@ img{
 
 .calculatorForm__item{
   list-style: none;
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.calculatorForm__item.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.calculatorForm__item.is-hidden .checkbox{
+  transform: scale(0.90);
 }
 
 .calculatorForm__item:not(:last-child){
@@ -84,12 +110,14 @@ img{
   text-align: center;
 }
 
-.getFinishCard{
+.deliveryMethod{
   font-size: 18px;
 }
 
-.ownAdress{
+.textareaForOwnAdressLabel{
   display: block;
+  margin-top: 1.025%;
+  margin-bottom: 1.25%;
 }
 
 .textareaOwnAdress{
@@ -103,7 +131,7 @@ img{
 .form__btn-sabmit{
   margin-top: 20px;
   display: block;
-  padding: 10px;
+  padding: 1.25%;  
   cursor: pointer;
 }
 
@@ -124,6 +152,8 @@ img{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  transition: transform 0.25s ease-in-out;
 }
 .checkbox.style-g input {
   position: absolute;
