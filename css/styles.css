@@ -1,13 +1,13 @@
 :root{
   --main-font-family:"Open Sans";
   --title-font-family: "Oswald";
-  --main-text-color-dark: rgb(33,33,33);
-  --main-text-color-light: rgb(255,255,255);
-  --main-bg-color: rgba(0,0,0,.5);
-  --dark-bg-color: rgb(25, 84, 94);
+  --main-text-color-dark: #212121;
+  --main-text-color-light: #ffffff;
+  --main-bg-color: #00000080;
+  --dark-bg-color: #19545e;
   --color-title: rgb(0,0,0);
-  --accent-text-color: rgb(191,144,0);
-  --accent-bg-color: rgb(244,22,22,1);
+  --accent-text-color:#bf9000;
+  --accent-bg-color: #f41616;
 }
 
 html {
@@ -53,9 +53,7 @@ img{
 }
 
 .calculator{
- 
-
-   background-color: var(--dark-bg-color);
+  background-color: var(--dark-bg-color);
 }
 
 .calculatorForm{
@@ -74,7 +72,6 @@ img{
 }
 
 .calculatorForm__item{
-  /* border-bottom: 1px solid #00000033; */
   list-style: none;
 }
 
@@ -142,9 +139,7 @@ img{
   opacity: 1;
   left: 8px;
 }
-/* .checkbox.style-g input:checked ~ .checkbox__body {
-  font-weight: bold;
-} */
+
 .checkbox.style-g:hover input ~ .checkbox__checkmark {
   background-color: #eee;
 }
@@ -178,10 +173,10 @@ img{
   color: var(--main-text-color-light);
   line-height: 1.6;
   font-size: 16px;
-  /* transition: font-weight 0.25s ease; */
 }
 
 .chooseCode:not(:last-child){
   margin-right: 20px;
 }
 
+/* кнопки радио сделать круглыми */
