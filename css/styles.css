@@ -255,3 +255,11 @@ img{
 .calculatorForm__priceLabel{
   text-transform: uppercase;
 }
+
+.extra__opportunity{
+  margin-bottom: 1.25%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 2px solid var(--main-bg-color) ;
+  border-bottom: 2px solid var(--main-bg-color) ;
+}
