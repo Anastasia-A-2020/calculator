@@ -15,7 +15,10 @@
   </head>
   <body>
     <section class="calculator">
-      <form action="" class="calculatorForm" name="calcForm">
+      <div class="calculator__image">
+        <img src="./images/bg-image.jpg" alt="exsample for use a card" />
+      </div>
+      <form action="calc price" class="calculatorForm" name="calcForm">
         <ul class="calculatorForm__list">
           <li class="calculatorForm__item">
             <label class="checkbox style-g">
@@ -23,6 +26,7 @@
                 id="visitInOfficeCheckbox"
                 type="checkbox"
                 name="visitInOffice"
+                checked
               />
               <div class="checkbox__checkmark"></div>
               <div class="checkbox__body">
@@ -60,21 +64,84 @@
                 </option>
               </select>
             </label>
-            <label class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
-              Введите адрес доставки:
-              <textarea
-                class="textareaOwnAdress"
-                id="textareaOwnAdress"
-                name="textareaOwnAdress"
-                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
-                title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number."
-                rows="7"
-                placeholder="Enter your address..."
-              ></textarea>
-            </label>
+
+            <!-- АДРЕС С ПОЛЯМИ -->
+            <!-- <div class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
+              <p class="textareaForOwnAdressLabel__text">
+                Введите адрес доставки:
+              </p>
+              <ul class="textareaForOwnAdressLabel__wrapper">
+                <li class="textareaForOwnAddres__item">
+                  <label for="index" class="textareaLabel" title="index">
+                    Индекс:
+                  </label>
+                  <input type="text" id="index" minlength="5" />
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label for="city" class="textareaLabel" title="city">
+                    Город:
+                  </label>
+                  <input type="text" id="city" />
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label for="street" class="textareaLabel" title="street">
+                    Улица:
+                  </label>
+                  <input type="text" id="street" />
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label for="house" class="textareaLabel" title="house"
+                    >Дом: </label
+                  ><input type="text" id="house" />
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label
+                    for="apartment"
+                    class="textareaLabel"
+                    title="apartment"
+                  >
+                    Квартира:
+                  </label>
+                  <input type="text" id="apartment" />
+                </li>
+              </ul>
+            </div> -->
+
+            <!-- КОНТАКТЫ -->
+            <div class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
+              <label for="telNumber" class="textareaLabel" title="telNumber">
+                Введите ваш контактный номер телефона вместе с кодом страны:
+              </label>
+              <input type="text" id="telNumber" minlength="8" />
+              <p class="textareaForOwnAdressLabel__text">Мой телефон есть в:</p>
+              <ul class="textareaForOwnAdressLabel__wrapper">
+                <li class="textareaForOwnAddres__item">
+                  <label for="Viber" class="textareaLabel checkbox style-g">
+                    <input type="checkbox" id="Viber" />
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">Viber</div>
+                  </label>
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label for="Telegram" class="textareaLabel checkbox style-g">
+                    <input type="checkbox" id="Telegram" />
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">Telegram</div>
+                  </label>
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label for="WhatsApp" class="textareaLabel checkbox style-g">
+                    <input type="checkbox" id="WhatsApp" />
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">WhatsApp</div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <!-- КОНТАКТЫ конец-->
           </li>
 
-          <li class="calculatorForm__item">
+          <li class="calculatorForm__item visually-hidden is-hidden">
             <label class="checkbox style-g">
               <input
                 id="getCardInOfficeCheckbox"
@@ -89,7 +156,10 @@
             </label>
           </li>
 
-          <li class="calculatorForm__item" id="hasBlik">
+          <li
+            class="calculatorForm__item visually-hidden is-hidden"
+            id="hasBlik"
+          >
             <label class="checkbox style-g">
               <input
                 id="hasBlikCheckbox"

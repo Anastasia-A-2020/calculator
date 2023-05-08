@@ -57,10 +57,14 @@ function onChangeInputValue() {
     procedure = a;
   }
 
+  if (refs.deliveryMethodsList.getInOfficeOption.selected) {
+    refs.getCardInOfficeCheckbox.checked = true;
+  } else {
+    refs.getCardInOfficeCheckbox.checked = false;
+  }
+
   if (refs.visitInOfficeCheckbox.checked) {
     refs.hasBlik.classList.add("visually-hidden", "is-hidden");
-    refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
-    // refs.deliveryMethodsList.getInOfficeOption.setAttribute("selected", true);
     refs.selectedDeliveryMethod?.setAttribute("selected", false);
 
     for (const value in Object.values(refs.deliveryMethodsList)) {
@@ -68,11 +72,12 @@ function onChangeInputValue() {
       if (
         optionValue.dataset.addres === "getInOffice" ||
         optionValue.dataset.addres === "ownAddres"
-      )
+      ) {
         continue;
+      }
       optionValue.setAttribute("disabled", true);
     }
-
+    refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
     addClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
   }
 
@@ -82,7 +87,13 @@ function onChangeInputValue() {
         "disabled"
       );
     }
-    refs.hasBlik.classList.remove("visually-hidden", "is-hidden");
+
+    if (refs.deliveryMethodsList.getInOfficeOption.selected) {
+      removeClass(refs.hasBlik, "visually-hidden", "is-hidden");
+    } else {
+      addClass(refs.hasBlik, "visually-hidden", "is-hidden");
+    }
+
     refs.deliveryMethodsList.getInOfficeOption.removeAttribute("selected");
     refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
     removeClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
@@ -161,7 +172,8 @@ function removeClass(element, ...className) {
 // +++ если приезжает в офис, то без блика
 // +++ если стоит галочка получить в офисе, то убираем способы доставки (автоматом получение в офисе)
 // уведомление, что уточним адрес после готовности карты
-// свой адресс - выводим поле для ввода адреса (индекс, город, улица, дом, квартира)
+// +++ свой адресс - выводим поле для ввода адреса (индекс, город, улица, дом, квартира)
+// добавить стили для своего адреса
 
 // +++ отправить ссылку на калк Сергею
 
@@ -178,9 +190,8 @@ function removeClass(element, ...className) {
 // +/- По пункту 2) - Как вариант можно сделать чтобы Ускоренное оформление всегда было активно поле (статус галочки ДА), а возможность отмены появлялась только при активации личной подачи.
 // image
 
-// Блок "Одновременно с картой мне  требуется" я бы выделил отдельным цветом или может взять в рамку? Чтобы было понятно клиенту, что это единое смысловое поле, влияющее на скидку.
+// +++ Блок "Одновременно с картой мне  требуется" я бы выделил отдельным цветом или может взять в рамку? Чтобы было понятно клиенту, что это единое смысловое поле, влияющее на скидку.
 
-// Сейчас по умолчанию калькулятор выдает Итоговая стоимость 677. Было бы неплохо на стартовой форме высвечивать минимально возможную оплату - 487, то есть сочетание "Приехать лично" ДА + "Свой адрес"
 // Поле "Введите адрес доставки" переназываем на "Введите ваш контактный номер телефона вместе с кодом страны" и рядом чекбоксы/флажки "Мой телефон есть в:"
 // ✅ Viber
 // ✅ Telegram
@@ -194,10 +205,5 @@ function removeClass(element, ...className) {
 
 // +++ Сейчас по умолчанию калькулятор выдает Итоговая стоимость 677. Было бы неплохо на стартовой форме высвечивать минимально возможную оплату - 487, то есть сочетание "Приехать лично" ДА + "Свой адрес"
 
-//Поле "У вас есть доступ к Blik?" Должно появляться только при одновременном выполнении:
-// Вы готовы приехать лично - НЕТ
-// Вам нужна услуга "Получение в офисе?" - ДА
-// Либо как вариант поднять поле "Выберите способ получения" вверх чтобы не дублировать вопрос способа получения карты.
-// Тогда поле "У вас есть доступ к Blik?" Должно появляться только при одновременном выполнении:
-// Вы готовы приехать лично - НЕТ
-// Выбор в выпадающем меню - "получение в офисе"
+// +++ Либо как вариант поднять поле "Выберите способ получения" вверх чтобы не дублировать вопрос способа получения карты.
+// +++ Тогда поле "У вас есть доступ к Blik?" Должно появляться только при одновременном выполнении: Вы готовы приехать лично - НЕТ. Выбор в выпадающем меню - "получение в офисе"

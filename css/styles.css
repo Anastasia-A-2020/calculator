@@ -46,15 +46,17 @@ button{
 
 img{
   display: block;
-  max-width: 100%;
   height: auto;
 }
 
-
-
 .calculator{
   background-color: var(--dark-bg-color);
-  padding: 1.25% 0;
+}
+
+.calculator__image img{  
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1250px;
 }
 
 .calculatorForm{
@@ -62,7 +64,7 @@ img{
   min-width: 480px;
   margin-right: auto;
   margin-left: auto;
-  border: 2px solid var(--main-text-color-light);
+  /* border: 2px solid var(--main-text-color-light); */
   border-radius: 4px;
   padding: 1.25%;
   font-size: 16px;
@@ -123,6 +125,10 @@ img{
 .textareaForOwnAdressLabel{
   display: block;
   margin-bottom: 1.25%;
+  /* border-top: 2px solid #ffffff80;
+  border-bottom: 2px solid #ffffff80 ; */
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .textareaOwnAdress{
@@ -131,6 +137,18 @@ img{
 
   font-size: 18px;
   resize: none;
+}
+
+.textareaForOwnAddres__item{
+list-style: none;
+display: inline-grid;
+margin-right: 25px;
+}
+
+.textareaForOwnAdressLabel__text{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
 }
 
 /* STYLE G */
@@ -191,13 +209,13 @@ img{
   width: 15px;
   height: 25px;
   border: solid var(--accent-text-color);
-  border-width: 0 4px 4px 0; /*!!!!!!!!!!!!!*/
+  border-width: 0 4px 4px 0; 
   transform: rotate(45deg);
   opacity: 0;
   transition: opacity 0.25s ease, left 0.25s ease; 
 }
 
-.checkbox.style-g .checkbox__checkmark.radio:after{/*my styles*/
+.checkbox.style-g .checkbox__checkmark.radio:after{
   top: 50%;
   left: 50%;
   border-radius: 50%;
@@ -260,6 +278,6 @@ img{
   margin-bottom: 1.25%;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-top: 2px solid var(--main-bg-color) ;
-  border-bottom: 2px solid var(--main-bg-color) ;
+  border-top: 2px solid #ffffff80;
+  border-bottom: 2px solid #ffffff80 ;
 }
