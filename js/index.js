@@ -36,14 +36,16 @@ const refs = {
 
 const calculatorForm = document.querySelector(".calculatorForm");
 const totalPriceValue = document.querySelector("#totalPriceValue");
-totalPriceValue.value = `${BASE_COST + +e}zl`;
+totalPriceValue.value = `${BASE_COST}zl`;
 calculatorForm.addEventListener("change", onChangeInputValue);
 calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
 
 function onCalculatorFormSubmit(event) {
+  console.log("hi");
   // event.preventDefault();
   event.preventDefault();
-  event.target.reset();
+  event.currentTarget.reset();
+  console.log("hii");
 }
 
 function onChangeInputValue() {
@@ -57,14 +59,18 @@ function onChangeInputValue() {
 
   if (refs.visitInOfficeCheckbox.checked) {
     refs.hasBlik.classList.add("visually-hidden", "is-hidden");
-    refs.deliveryMethodsList.getInOfficeOption.setAttribute("selected", true);
+    refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
+    // refs.deliveryMethodsList.getInOfficeOption.setAttribute("selected", true);
     refs.selectedDeliveryMethod?.setAttribute("selected", false);
 
     for (const value in Object.values(refs.deliveryMethodsList)) {
-      Object.values(refs.deliveryMethodsList)[value].setAttribute(
-        "disabled",
-        true
-      );
+      const optionValue = Object.values(refs.deliveryMethodsList)[value];
+      if (
+        optionValue.dataset.addres === "getInOffice" ||
+        optionValue.dataset.addres === "ownAddres"
+      )
+        continue;
+      optionValue.setAttribute("disabled", true);
     }
 
     addClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
@@ -125,12 +131,12 @@ function onChangeInputValue() {
   const extraSum = procedure ? procedure : a;
   const deliverySum = refs.deliveryMethod.value;
 
-  // console.log("минимальная стоимость:", BASE_COST);
-  // console.log("доплата по выбранной процедуре", extraSum);
-  // console.log("стоимость доставки", deliverySum);
+  console.log("минимальная стоимость:", BASE_COST);
+  console.log("доплата по выбранной процедуре", extraSum);
+  console.log("стоимость доставки", deliverySum);
 
   totalPriceValue.value = `${BASE_COST + +extraSum + +deliverySum}zl`;
-  // console.log("ИТОГОВАЯ СТОИМОСТЬ:", totalPriceValue.value);
+  console.log("ИТОГОВАЯ СТОИМОСТЬ:", totalPriceValue.value);
 }
 
 function addClass(element, ...className) {
@@ -142,6 +148,10 @@ function removeClass(element, ...className) {
 }
 
 // localStorage
+// очистка формы после отправки
+// не работает сабмит, если установить привент дефолт, почему???
+// добавить валидацию на форму, плюс убрать зависимость от регистра
+// проверка на заполненность обязательных полей формы
 
 // +++ нужна ли детализация итоговой суммы? (клиенту - нет)
 // шаблон ответа на почту (сумма и детализация)
@@ -164,3 +174,27 @@ function removeClass(element, ...className) {
 
 // 2) графа "Вам нужно ускоренное оформление?" должна появляться только если клиент активировал поле "Вы готовы приехать лично на подачу документов?" Удаленные процедуры без приезда в офис автоматически являются ускоренными
 // +/- По пункту 2) - Как вариант можно сделать чтобы Ускоренное оформление всегда было активно поле (статус галочки ДА), а возможность отмены появлялась только при активации личной подачи.
+// image
+
+// Блок "Одновременно с картой мне  требуется" я бы выделил отдельным цветом или может взять в рамку? Чтобы было понятно клиенту, что это единое смысловое поле, влияющее на скидку.
+// Сейчас по умолчанию калькулятор выдает Итоговая стоимость 677. Было бы неплохо на стартовой форме высвечивать минимально возможную оплату - 487, то есть сочетание "Приехать лично" ДА + "Свой адрес"
+// Поле "Введите адрес доставки" переназываем на "Введите ваш контактный номер телефона вместе с кодом страны" и рядом чекбоксы/флажки "Мой телефон есть в:"
+// ✅ Viber
+// ✅ Telegram
+// ✅ WhatsApp
+
+// И пожалуйста ниже плюс одно поле
+// "Ваша электронная почта"
+// С верификацией существования почтового ящика (на случай ошибочного ввода) - если такое возможно конечно...)
+
+// +++Вы готовы приехать лично - ДА. Вам нужно ускоренное - НЕТ. При этой комбинации не выбирается доставка, жёстко привязано "Получение в офисе"
+
+// Сейчас по умолчанию калькулятор выдает Итоговая стоимость 677. Было бы неплохо на стартовой форме высвечивать минимально возможную оплату - 487, то есть сочетание "Приехать лично" ДА + "Свой адрес"
+
+//Поле "У вас есть доступ к Blik?" Должно появляться только при одновременном выполнении:
+// Вы готовы приехать лично - НЕТ
+// Вам нужна услуга "Получение в офисе?" - ДА
+// Либо как вариант поднять поле "Выберите способ получения" вверх чтобы не дублировать вопрос способа получения карты.
+// Тогда поле "У вас есть доступ к Blik?" Должно появляться только при одновременном выполнении:
+// Вы готовы приехать лично - НЕТ
+// Выбор в выпадающем меню - "получение в офисе"

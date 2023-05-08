@@ -5,7 +5,7 @@
   --main-text-color-light: #ffffff;
   --main-bg-color: #00000080;
   --dark-bg-color: #19545e;
-  --color-title: rgb(0,0,0);
+  --color-title: #000;
   --accent-text-color:#bf9000;
   --accent-bg-color: #f41616;
 }
@@ -22,11 +22,9 @@ html {
 
 body{
   margin: 0;
-
   font-family: var(--main-font-family), sans-serif;
   font-weight: 400;
-  color: var(--main-text-color-dark)
-
+  color: var(--main-text-color-dark);
 }
 
 h1,
@@ -56,6 +54,7 @@ img{
 
 .calculator{
   background-color: var(--dark-bg-color);
+  padding: 1.25% 0;
 }
 
 .calculatorForm{
@@ -63,6 +62,7 @@ img{
   min-width: 480px;
   margin-right: auto;
   margin-left: auto;
+  border: 2px solid var(--main-text-color-light);
   border-radius: 4px;
   padding: 1.25%;
   font-size: 16px;
@@ -111,6 +111,13 @@ img{
 .deliveryMethod{
   margin-bottom: 1.25%;
   font-size: 18px;
+  padding: 7px;
+  border: 2px solid var(--accent-text-color);
+  border-radius: 4px;
+}
+
+.deliveryMethodOption{
+  padding: 10px;
 }
 
 .textareaForOwnAdressLabel{
@@ -234,6 +241,7 @@ img{
 }
 
 .calculatorForm__price{
+  outline: none;
   border-radius: 4px;
   text-align: center;
   padding: 5px;
