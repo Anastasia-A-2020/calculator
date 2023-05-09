@@ -167,9 +167,7 @@ function onChangeInputValue() {
       }zl`);
     }
 
-    return (totalPriceValue.value = `${
-      +BASE_COST + +extraSum + +deliverySum
-    }zl`);
+    totalPriceValue.value = `${+BASE_COST + +extraSum + +deliverySum}zl`;
   }
   // console.log("минимальная стоимость:", BASE_COST);
   // console.log("доплата по выбранной процедуре", extraSum);
