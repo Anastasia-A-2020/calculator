@@ -1,28 +1,28 @@
 .calculator {
   background-color: $dark-bg-color;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
+  padding: 1rem;
 
-.calculator__image img {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 100%;
+  @media screen and (max-width: 500px) {
+    padding: 0;
+  }
 }
 
 .calculatorForm {
   max-width: 680px;
-  min-width: 480px;
+  min-width: 320px;
   margin-right: auto;
   margin-left: auto;
   border: 2px solid $main-text-color-light;
   border-radius: 4px;
-  padding: 1.25%;
+  padding: 1.25rem;
   font-size: 14px;
   line-height: 1.5;
 
   color: $main-text-color-light;
+
+  @media screen and (max-width: 479px) {
+    padding: 2px;
+  }
 }
 
 .calculatorForm__item {
@@ -44,6 +44,13 @@
   transform: scale(0.9);
 }
 
+.calculator__image img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+}
+
 .calculatorForm__title {
   margin-bottom: 15px;
   text-align: center;
@@ -55,13 +62,17 @@
   padding: 4px;
   border: 2px solid $accent-text-color;
   border-radius: 4px;
+
+  @media screen and (max-width: 479px) {
+    font-size: 10px;
+  }
 }
 
 .textareaForOwnAdressLabel {
   display: block;
   margin-bottom: 1.25%;
-  /* border-top: 2px solid #ffffff80;
-  border-bottom: 2px solid #ffffff80 ; */
+  // border-top: 2px solid #ffffff80;
+  // border-bottom: 2px solid #ffffff80;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -78,6 +89,10 @@
   list-style: none;
   display: inline-grid;
   margin-right: 25px;
+
+  @media screen and (max-width: 479px) {
+    margin-right: 15px;
+  }
 }
 
 .textareaForOwnAdressLabel__text {
