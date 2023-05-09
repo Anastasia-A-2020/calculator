@@ -8,7 +8,7 @@
 }
 
 .calculatorForm {
-  max-width: 680px;
+  max-width: 580px;
   min-width: 320px;
   margin-right: auto;
   margin-left: auto;
@@ -23,10 +23,14 @@
 
 .calculatorForm__list,
 .form__footer {
-  padding: 1.25rem;
+  padding: 1rem;
   @media screen and (max-width: 479px) {
     padding: 2px;
   }
+}
+
+.form__footer {
+  padding-top: 0;
 }
 
 .calculatorForm__item {

@@ -16,9 +16,13 @@ const refs = {
   hasBlikCheckbox: document.getElementById("hasBlikCheckbox"),
   deliveryMethod: document.querySelector("#deliveryMethod"),
   hasBlik: document.querySelector("#hasBlik"),
+  expeditedClearance: document.querySelector("#expeditedClearance"),
+  expeditedClearanceCheckbox: document.querySelector(
+    "#expeditedClearanceCheckbox"
+  ),
   selectedDeliveryMethod: document.querySelector("option[selected]"),
   textareaForOwnAdress: document.querySelector("#textareaForOwnAdress"),
-  // extraOpportunity: document.querySelector(".extra__opportunity"),
+  extraOpportunity: document.querySelector(".extra__opportunity"),
 
   deliveryMethodsList: {
     ownAddresOption: document.querySelector("[data-addres='ownAddres']"),
@@ -64,9 +68,10 @@ function onChangeInputValue() {
   }
 
   if (refs.visitInOfficeCheckbox.checked) {
-    refs.hasBlik.classList.add("visually-hidden", "is-hidden");
-    refs.selectedDeliveryMethod?.setAttribute("selected", false);
+    addClass(refs.hasBlik, "visually-hidden", "is-hidden");
+    removeClass(refs.expeditedClearance, "visually-hidden", "is-hidden");
 
+    // refs.selectedDeliveryMethod?.setAttribute("selected", false);
     // for (const value in Object.values(refs.deliveryMethodsList)) {
     //   const optionValue = Object.values(refs.deliveryMethodsList)[value];
     //   if (
@@ -77,10 +82,12 @@ function onChangeInputValue() {
     //   }
     //   optionValue.setAttribute("disabled", true);
     // }
-    refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
+    // refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
   }
 
   if (!refs.visitInOfficeCheckbox.checked) {
+    refs.expeditedClearanceCheckbox.checked = true;
+    addClass(refs.expeditedClearance, "visually-hidden", "is-hidden");
     // for (const value in Object.values(refs.deliveryMethodsList)) {
     //   Object.values(refs.deliveryMethodsList)[value].removeAttribute(
     //     "disabled"
@@ -130,14 +137,6 @@ function onChangeInputValue() {
     procedure = e;
   }
 
-  // if (refs.deliveryMethodsList.ownAddresOption.selected === false) {
-  //   addClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
-  // }
-
-  // if (refs.deliveryMethodsList.ownAddresOption.selected) {
-  //   removeClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
-  // }
-
   const extraSum = procedure ? procedure : a;
   const deliverySum = refs.deliveryMethod.value;
 
@@ -148,6 +147,10 @@ function onChangeInputValue() {
   totalPriceValue.value = `${BASE_COST + +extraSum + +deliverySum}zl`;
   console.log("ИТОГОВАЯ СТОИМОСТЬ:", totalPriceValue.value);
 }
+
+refs.extraOpportunity.addEventListener("click", getDiscount);
+
+function getDiscount() {}
 
 function addClass(element, ...className) {
   return element.classList.add(...className);
@@ -206,3 +209,5 @@ function removeClass(element, ...className) {
 
 // +++ Либо как вариант поднять поле "Выберите способ получения" вверх чтобы не дублировать вопрос способа получения карты.
 // +++ Тогда поле "У вас есть доступ к Blik?" Должно появляться только при одновременном выполнении: Вы готовы приехать лично - НЕТ. Выбор в выпадающем меню - "получение в офисе"
+
+// отправить клиенту расшифровку суммы на почту (через алерт спросить нужно ли ему это)
