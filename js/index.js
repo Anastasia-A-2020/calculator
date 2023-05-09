@@ -44,9 +44,8 @@ calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
 function onCalculatorFormSubmit(event) {
   console.log("hi");
   // event.preventDefault();
-  event.preventDefault();
   event.currentTarget.reset();
-  console.log("hii");
+  console.log("hello");
 }
 
 function onChangeInputValue() {
@@ -68,26 +67,25 @@ function onChangeInputValue() {
     refs.hasBlik.classList.add("visually-hidden", "is-hidden");
     refs.selectedDeliveryMethod?.setAttribute("selected", false);
 
-    for (const value in Object.values(refs.deliveryMethodsList)) {
-      const optionValue = Object.values(refs.deliveryMethodsList)[value];
-      if (
-        optionValue.dataset.addres === "getInOffice" ||
-        optionValue.dataset.addres === "ownAddres"
-      ) {
-        continue;
-      }
-      optionValue.setAttribute("disabled", true);
-    }
+    // for (const value in Object.values(refs.deliveryMethodsList)) {
+    //   const optionValue = Object.values(refs.deliveryMethodsList)[value];
+    //   if (
+    //     optionValue.dataset.addres === "getInOffice" ||
+    //     optionValue.dataset.addres === "ownAddres"
+    //   ) {
+    //     continue;
+    //   }
+    //   optionValue.setAttribute("disabled", true);
+    // }
     refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
-    addClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
   }
 
   if (!refs.visitInOfficeCheckbox.checked) {
-    for (const value in Object.values(refs.deliveryMethodsList)) {
-      Object.values(refs.deliveryMethodsList)[value].removeAttribute(
-        "disabled"
-      );
-    }
+    // for (const value in Object.values(refs.deliveryMethodsList)) {
+    //   Object.values(refs.deliveryMethodsList)[value].removeAttribute(
+    //     "disabled"
+    //   );
+    // }
 
     if (refs.deliveryMethodsList.getInOfficeOption.selected) {
       removeClass(refs.hasBlik, "visually-hidden", "is-hidden");
@@ -97,7 +95,6 @@ function onChangeInputValue() {
 
     refs.deliveryMethodsList.getInOfficeOption.removeAttribute("selected");
     refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
-    removeClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
   }
 
   if (
@@ -133,13 +130,13 @@ function onChangeInputValue() {
     procedure = e;
   }
 
-  if (refs.deliveryMethodsList.ownAddresOption.selected === false) {
-    addClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
-  }
+  // if (refs.deliveryMethodsList.ownAddresOption.selected === false) {
+  //   addClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
+  // }
 
-  if (refs.deliveryMethodsList.ownAddresOption.selected) {
-    removeClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
-  }
+  // if (refs.deliveryMethodsList.ownAddresOption.selected) {
+  //   removeClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
+  // }
 
   const extraSum = procedure ? procedure : a;
   const deliverySum = refs.deliveryMethod.value;

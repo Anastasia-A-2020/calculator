@@ -14,12 +14,16 @@
   margin-left: auto;
   border: 2px solid $main-text-color-light;
   border-radius: 4px;
-  padding: 1.25rem;
+
   font-size: 14px;
   line-height: 1.5;
 
   color: $main-text-color-light;
+}
 
+.calculatorForm__list,
+.form__footer {
+  padding: 1.25rem;
   @media screen and (max-width: 479px) {
     padding: 2px;
   }
@@ -44,11 +48,13 @@
   transform: scale(0.9);
 }
 
-.calculator__image img {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 100%;
+.calculator__image {
+  height: 10rem;
+  background-color: cornflowerblue;
+  background-image: url("../images/bg-image.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .calculatorForm__title {
