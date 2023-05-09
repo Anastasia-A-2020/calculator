@@ -18,6 +18,7 @@ const refs = {
   hasBlik: document.querySelector("#hasBlik"),
   selectedDeliveryMethod: document.querySelector("option[selected]"),
   textareaForOwnAdress: document.querySelector("#textareaForOwnAdress"),
+  // extraOpportunity: document.querySelector(".extra__opportunity"),
 
   deliveryMethodsList: {
     ownAddresOption: document.querySelector("[data-addres='ownAddres']"),
@@ -135,6 +136,7 @@ function onChangeInputValue() {
   if (refs.deliveryMethodsList.ownAddresOption.selected === false) {
     addClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
   }
+
   if (refs.deliveryMethodsList.ownAddresOption.selected) {
     removeClass(refs.textareaForOwnAdress, "visually-hidden", "is-hidden");
   }
@@ -192,7 +194,7 @@ function removeClass(element, ...className) {
 
 // +++ Блок "Одновременно с картой мне  требуется" я бы выделил отдельным цветом или может взять в рамку? Чтобы было понятно клиенту, что это единое смысловое поле, влияющее на скидку.
 
-// Поле "Введите адрес доставки" переназываем на "Введите ваш контактный номер телефона вместе с кодом страны" и рядом чекбоксы/флажки "Мой телефон есть в:"
+// +++ Поле "Введите адрес доставки" переназываем на "Введите ваш контактный номер телефона вместе с кодом страны" и рядом чекбоксы/флажки "Мой телефон есть в:"
 // ✅ Viber
 // ✅ Telegram
 // ✅ WhatsApp

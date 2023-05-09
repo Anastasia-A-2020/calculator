@@ -1,0 +1,43 @@
+.form__footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.form__btn-sabmit {
+  display: block;
+  border-radius: 4px;
+  padding: 1.25%;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+
+.form__btn-sabmit:hover,
+.form__btn-sabmit:focus {
+  background-color: $accent-bg-color;
+  color: $main-text-color-light;
+}
+
+.calculatorForm__price {
+  outline: none;
+  border-radius: 4px;
+  text-align: center;
+  padding: 5px;
+  font-size: 14px;
+  background-color: $accent-text-color;
+  color: $main-text-color-light;
+
+  max-width: 250px;
+}
+
+.calculatorForm__priceLabel {
+  text-transform: uppercase;
+}
+
+.extra__opportunity {
+  margin-bottom: 1.25%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 2px solid #ffffff80;
+  border-bottom: 2px solid #ffffff80;
+}

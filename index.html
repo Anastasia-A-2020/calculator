@@ -11,13 +11,14 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- <link rel="stylesheet" href="./css/styles.css" /> -->
+    <link rel="stylesheet" href="./scss/styles.scss" />
   </head>
   <body>
     <section class="calculator">
-      <div class="calculator__image">
+      <!-- <div class="calculator__image">
         <img src="./images/bg-image.jpg" alt="exsample for use a card" />
-      </div>
+      </div> -->
       <form action="calc price" class="calculatorForm" name="calcForm">
         <ul class="calculatorForm__list">
           <li class="calculatorForm__item">
@@ -55,57 +56,11 @@
                 <option value="125" data-addres="shipmentInternational">
                   пересылка международная (кроме РФ)
                 </option>
-                <option
-                  value="200"
-                  data-addres="shipmenttoTheRF"
-                  class="deliveryMethodOption"
-                >
+                <option value="200" data-addres="shipmenttoTheRF">
                   пересылка в РФ
                 </option>
               </select>
             </label>
-
-            <!-- АДРЕС С ПОЛЯМИ -->
-            <!-- <div class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
-              <p class="textareaForOwnAdressLabel__text">
-                Введите адрес доставки:
-              </p>
-              <ul class="textareaForOwnAdressLabel__wrapper">
-                <li class="textareaForOwnAddres__item">
-                  <label for="index" class="textareaLabel" title="index">
-                    Индекс:
-                  </label>
-                  <input type="text" id="index" minlength="5" />
-                </li>
-                <li class="textareaForOwnAddres__item">
-                  <label for="city" class="textareaLabel" title="city">
-                    Город:
-                  </label>
-                  <input type="text" id="city" />
-                </li>
-                <li class="textareaForOwnAddres__item">
-                  <label for="street" class="textareaLabel" title="street">
-                    Улица:
-                  </label>
-                  <input type="text" id="street" />
-                </li>
-                <li class="textareaForOwnAddres__item">
-                  <label for="house" class="textareaLabel" title="house"
-                    >Дом: </label
-                  ><input type="text" id="house" />
-                </li>
-                <li class="textareaForOwnAddres__item">
-                  <label
-                    for="apartment"
-                    class="textareaLabel"
-                    title="apartment"
-                  >
-                    Квартира:
-                  </label>
-                  <input type="text" id="apartment" />
-                </li>
-              </ul>
-            </div> -->
 
             <!-- КОНТАКТЫ -->
             <div class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
@@ -200,12 +155,17 @@
                 <div class="checkbox__body">Короткий Код 95</div>
               </label>
               <label class="checkbox style-g chooseCode">
-                <input id="" type="radio" name="getCode" value="90" />
+                <input
+                  id="shortCode95"
+                  type="radio"
+                  name="getCode"
+                  value="90"
+                />
                 <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Длинный Код 95</div>
               </label>
               <label class="checkbox style-g chooseCode">
-                <input id="" type="radio" name="getCode" value="0" />
+                <input id="longCode95" type="radio" name="getCode" value="0" />
                 <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Код 95 НЕ нужен</div>
               </label>
@@ -213,7 +173,7 @@
             <div>
               <label class="checkbox style-g category-CE">
                 <input
-                  id="expeditedClearanceCheckbox"
+                  id="category-CE"
                   type="checkbox"
                   name="category-CE"
                   value="100"
@@ -247,3 +207,45 @@
     <script src="./js/index.js"></script>
   </body>
 </html>
+
+<!-- АДРЕС С ПОЛЯМИ -->
+<!-- <div class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
+              <p class="textareaForOwnAdressLabel__text">
+                Введите адрес доставки:
+              </p>
+              <ul class="textareaForOwnAdressLabel__wrapper">
+                <li class="textareaForOwnAddres__item">
+                  <label for="index" class="textareaLabel" title="index">
+                    Индекс:
+                  </label>
+                  <input type="text" id="index" minlength="5" />
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label for="city" class="textareaLabel" title="city">
+                    Город:
+                  </label>
+                  <input type="text" id="city" />
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label for="street" class="textareaLabel" title="street">
+                    Улица:
+                  </label>
+                  <input type="text" id="street" />
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label for="house" class="textareaLabel" title="house"
+                    >Дом: </label
+                  ><input type="text" id="house" />
+                </li>
+                <li class="textareaForOwnAddres__item">
+                  <label
+                    for="apartment"
+                    class="textareaLabel"
+                    title="apartment"
+                  >
+                    Квартира:
+                  </label>
+                  <input type="text" id="apartment" />
+                </li>
+              </ul>
+            </div> -->

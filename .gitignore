@@ -1,0 +1,10 @@
+node_modules
+dist
+justfile
+
+.vscode/**/*
+!.vscode/settings.json
+.history
+
+.DS_Store
+Thumbs.db
