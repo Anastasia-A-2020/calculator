@@ -64,10 +64,36 @@
 
             <!-- КОНТАКТЫ -->
             <div class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
-              <label for="telNumber" class="textareaLabel" title="telNumber">
-                Введите ваш контактный номер телефона вместе с кодом страны:
-              </label>
-              <input type="text" id="telNumber" minlength="8" />
+              <div class="contacts__wrapper">
+                <label for="email" class="contacts__label" title="email">
+                  E-mail:
+                </label>
+                <input
+                  class="contacts__input"
+                  type="text"
+                  id="email"
+                  minlength="8"
+                  placeholder="mymail@mail.com"
+                  title="mymail@mail.com"
+                />
+
+                <label
+                  for="telNumber"
+                  class="contacts__label"
+                  title="telNumber"
+                >
+                  Telephon (с кодом страны):
+                </label>
+                <input
+                  class="contacts__input"
+                  type="text"
+                  id="telNumber"
+                  minlength="8"
+                  placeholder="+38 (123) 4567890"
+                  title="+38 (123) 4567890"
+                />
+              </div>
+
               <p class="textareaForOwnAdressLabel__text">Мой телефон есть в:</p>
               <ul class="textareaForOwnAdressLabel__wrapper">
                 <li class="textareaForOwnAddres__item">
