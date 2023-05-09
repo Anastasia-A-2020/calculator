@@ -1,11 +1,19 @@
 const BASE_COST = 487;
 
-const a = "0"; //без доплаты
-const b = "80"; // +80
-
-const c = "130"; // +130 + 25
+const a = "0";
+const b = "80";
+const c = "130";
 const d = "145"; // +145 +25 (437 + 220)
-const e = "190"; // +190
+const e = "190";
+
+const discountsList = {
+  shortCode95: "75",
+  longCode95: "90",
+  noCode95: "0",
+};
+
+// создать переменную для category_CE = 100
+// создать переменные для стоимости доставки (все варианты)
 
 const refs = {
   expeditedClearanceCheckbox: document.getElementById(
@@ -23,6 +31,7 @@ const refs = {
   selectedDeliveryMethod: document.querySelector("option[selected]"),
   textareaForOwnAdress: document.querySelector("#textareaForOwnAdress"),
   extraOpportunity: document.querySelector(".extra__opportunity"),
+  category_CE: document.querySelector("#category_CE"),
 
   deliveryMethodsList: {
     ownAddresOption: document.querySelector("[data-addres='ownAddres']"),
@@ -140,17 +149,38 @@ function onChangeInputValue() {
   const extraSum = procedure ? procedure : a;
   const deliverySum = refs.deliveryMethod.value;
 
-  console.log("минимальная стоимость:", BASE_COST);
-  console.log("доплата по выбранной процедуре", extraSum);
-  console.log("стоимость доставки", deliverySum);
+  const priceWithoutDiscount = +BASE_COST + +extraSum + +deliverySum;
 
-  totalPriceValue.value = `${BASE_COST + +extraSum + +deliverySum}zl`;
-  console.log("ИТОГОВАЯ СТОИМОСТЬ:", totalPriceValue.value);
+  // console.log("минимальная стоимость:", BASE_COST);
+  // console.log("доплата по выбранной процедуре", extraSum);
+  // console.log("стоимость доставки", deliverySum);
+
+  if (category_CE.checked) {
+    return (totalPriceValue.value = `${
+      +BASE_COST + +extraSum + +deliverySum - +refs.category_CE.value
+    }zl`);
+  }
+
+  if (!category_CE.checked) {
+    let discount = getDiscount([
+      ...document.querySelectorAll(".chooseCode input"),
+    ]);
+    if (discount.value) {
+      return (totalPriceValue.value = `${
+        +BASE_COST + +extraSum + +deliverySum - +discount.value
+      }zl`);
+    }
+
+    return (totalPriceValue.value = `${
+      +BASE_COST + +extraSum + +deliverySum
+    }zl`);
+  }
+  // console.log("ИТОГОВАЯ СТОИМОСТЬ:", totalPriceValue.value);
 }
 
-refs.extraOpportunity.addEventListener("click", getDiscount);
-
-function getDiscount() {}
+function getDiscount(arr) {
+  return arr.find(el => el.checked);
+}
 
 function addClass(element, ...className) {
   return element.classList.add(...className);

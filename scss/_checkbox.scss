@@ -80,6 +80,10 @@
   font-size: 14px;
 }
 
+.chooseCode {
+  list-style: none;
+}
+
 .chooseCode:not(:last-child) {
   margin-right: 20px;
 }
