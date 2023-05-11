@@ -9,8 +9,8 @@
 
 .extra__opportunity {
   margin-bottom: 1.25%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-top: 2px solid #ffffff80;
   border-bottom: 2px solid #ffffff80;
 }
@@ -24,6 +24,8 @@
 
   @media screen and (max-width: 479px) {
     display: block;
+
+    padding: 5px;
   }
 }
 

@@ -17,6 +17,7 @@ const deliveryPrices = {
 };
 
 const surchargeSumForProcedureD = "220 zl";
+
 // создать переменные для стоимости доставки (все варианты)
 
 const refs = {
