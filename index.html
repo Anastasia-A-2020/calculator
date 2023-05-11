@@ -209,18 +209,50 @@
           </li>
         </ul>
 
-        <div class="form__footer">
-          <label
-            id="totalPrice"
-            name="totalPrice"
-            class="calculatorForm__priceLabel"
-            >итоговая Стоимость карты:
+        <div class="calulator__footer form__footer">
+          <div class="form__amounts">
+            <label
+              id="Prepayment"
+              for="PrepaymentValue"
+              name="Prepayment"
+              class="calculatorForm__priceLabel"
+              >Предоплата:
+            </label>
+            <input
+              class="calculatorForm__price"
+              id="PrepaymentValue"
+              type="text"
+              readonly
+            />
+
+            <label
+              id="Surcharge"
+              for="SurchargeValue"
+              name="Surcharge"
+              class="calculatorForm__priceLabel"
+              >Доплата в момент получения:
+            </label>
+            <input
+              class="calculatorForm__price"
+              id="SurchargeValue"
+              type="text"
+              readonly
+            />
+
+            <label
+              id="totalPrice"
+              for="totalPriceValue"
+              name="totalPrice"
+              class="calculatorForm__priceLabel"
+              >Итоговая стоимость:
+            </label>
             <input
               class="calculatorForm__price"
               id="totalPriceValue"
               type="text"
               readonly
-          /></label>
+            />
+          </div>
 
           <button type="submit" class="form__btn-sabmit">Отправить</button>
         </div>

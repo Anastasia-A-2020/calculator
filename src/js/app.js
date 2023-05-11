@@ -12,6 +12,11 @@ const discountsList = {
   noCode95: "0",
 };
 
+const deliveryPrices = {
+  getInoffice: 25,
+};
+
+const surchargeSumForProcedureD = "220 zl";
 // создать переменные для стоимости доставки (все варианты)
 
 const refs = {
@@ -32,6 +37,9 @@ const refs = {
   extraOpportunity: document.querySelector(".extra__opportunity"),
   // category_CE: document.querySelector("#category_CE"),
 
+  surchargeSum: document.querySelector("#SurchargeValue"),
+  prepaymentSum: document.querySelector("#PrepaymentValue"),
+
   deliveryMethodsList: {
     ownAddresOption: document.querySelector("[data-addres='ownAddres']"),
     getInOfficeOption: document.querySelector("[data-addres='getInOffice']"),
@@ -49,9 +57,12 @@ const refs = {
 
 const calculatorForm = document.querySelector(".calculatorForm");
 const totalPriceValue = document.querySelector("#totalPriceValue");
-totalPriceValue.value = `${BASE_COST}zl`;
+totalPriceValue.value = `${BASE_COST} zl`;
 calculatorForm.addEventListener("change", onChangeInputValue);
 calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
+
+refs.prepaymentSum.value = `${BASE_COST} zl`;
+refs.surchargeSum.value = `0 zl`;
 
 function onCalculatorFormSubmit(event) {
   event.preventDefault();
@@ -72,8 +83,10 @@ function onChangeInputValue() {
 
   if (refs.deliveryMethodsList.getInOfficeOption.selected) {
     refs.getCardInOfficeCheckbox.checked = true;
+    refs.surchargeSum.value = `${parseInt(deliveryPrices.getInoffice)} zl`;
   } else {
     refs.getCardInOfficeCheckbox.checked = false;
+    refs.surchargeSum.value = `0 zl`;
   }
 
   if (refs.visitInOfficeCheckbox.checked) {
@@ -136,6 +149,7 @@ function onChangeInputValue() {
     !refs.hasBlikCheckbox.checked
   ) {
     procedure = d;
+    refs.surchargeSum.value = surchargeSumForProcedureD;
   }
 
   if (
@@ -175,20 +189,24 @@ function onChangeInputValue() {
   if (discount.value) {
     totalPriceValue.value = `${
       +BASE_COST + +extraSum + +deliverySum - +discount.value
-    }zl`;
+    } zl`;
   } else {
-    totalPriceValue.value = `${+BASE_COST + +extraSum + +deliverySum}zl`;
+    totalPriceValue.value = `${+BASE_COST + +extraSum + +deliverySum} zl`;
   }
 
-  console.log("минимальная стоимость:", BASE_COST);
-  console.log("доплата по выбранной процедуре", extraSum);
-  console.log("стоимость доставки", deliverySum);
-  console.log("сумма скидки: ", discount.value);
-  console.log("ИТОГОВАЯ СТОИМОСТЬ:", totalPriceValue.value);
+  refs.prepaymentSum.value = `${
+    parseInt(totalPriceValue.value) - parseInt(refs.surchargeSum.value)
+  } zl`;
+
+  // console.log("минимальная стоимость:", BASE_COST);
+  // console.log("доплата по выбранной процедуре", extraSum);
+  // console.log("стоимость доставки", deliverySum);
+  // console.log("сумма скидки: ", discount.value);
+  // console.log("ИТОГОВАЯ СТОИМОСТЬ:", totalPriceValue.value);
 }
 
 function getDiscount(arr) {
-  return arr.find(el => el.checked);
+  return arr.find(element => element.checked);
 }
 
 function addClass(element, ...className) {
@@ -200,8 +218,8 @@ function removeClass(element, ...className) {
 }
 
 // localStorage
-// очистка формы после отправки
-// не работает сабмит, если установить привент дефолт, почему???
+// +++ очистка формы после отправки
+// +++ не работает сабмит, если установить привент дефолт
 // добавить валидацию на форму, плюс убрать зависимость от регистра
 // проверка на заполненность обязательных полей формы
 
@@ -239,7 +257,7 @@ function removeClass(element, ...className) {
 // ✅ WhatsApp
 
 // +++ И пожалуйста ниже плюс одно поле. "Ваша электронная почта"
-// С верификацией существования почтового ящика (на случай ошибочного ввода) - если такое возможно конечно...)
+// +++ С верификацией существования почтового ящика (на случай ошибочного ввода) - если такое возможно конечно...) - не удолось
 
 // +++Вы готовы приехать лично - ДА. Вам нужно ускоренное - НЕТ. При этой комбинации не выбирается доставка, жёстко привязано "Получение в офисе"
 
@@ -252,6 +270,9 @@ function removeClass(element, ...className) {
 //+++ контакты должно быть всегда видно
 //+++ вся форма должна быть маленькой
 // +++ картинка внутри формы
+
+// +++ Кнопка N°1 предоплата Кнопка N°2 доплата в момент получения Кнопка N°3 итоговая стоимость
+// Кнопка N°1 = N°3 минус N°2. N°3 уже считается корректно
 
 // ПРЕДЛОЖЕНИЕ
 // +++ отправить клиенту расшифровку суммы на почту (через алерт спросить нужно ли ему это) - не нужно!

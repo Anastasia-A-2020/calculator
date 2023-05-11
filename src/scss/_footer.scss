@@ -1,12 +1,20 @@
 .form__footer {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  justify-items: center;
+  gap: 10px;
 
   @media screen and (max-width: 479px) {
-    grid-template-columns: 1fr;
+    padding: 10px;
     justify-items: center;
     gap: 10px;
   }
+}
+
+.form__amounts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: center;
 }
 
 .form__btn-sabmit {
@@ -35,7 +43,8 @@
   background-color: $accent-text-color;
   color: $main-text-color-light;
 
-  max-width: 220px;
+  // max-width: 120px;
+  min-width: 70px;
 }
 
 .calculatorForm__priceLabel {
