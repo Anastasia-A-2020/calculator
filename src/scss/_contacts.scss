@@ -14,3 +14,34 @@
   border-radius: 4px;
   padding: 5px;
 }
+
+.textareaForOwnAdressLabel {
+  display: block;
+  margin-bottom: 1.25%;
+  border-bottom: 2px solid #ffffff80;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.textareaOwnAdress {
+  display: block;
+  width: 100%;
+
+  font-size: 14px;
+  resize: none;
+}
+
+.textareaForOwnAddres__item {
+  list-style: none;
+  display: inline-grid;
+  margin-right: 25px;
+
+  @media screen and (max-width: 479px) {
+    margin-right: 15px;
+  }
+}
+
+.textareaForOwnAdressLabel__text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
