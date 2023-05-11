@@ -15,7 +15,8 @@
   </head>
   <body>
     <section class="calculator">
-      <form action="calc price" class="calculatorForm" name="calcForm">
+      <!-- class="calculator__form form" -->
+      <form class="calculatorForm" name="calcForm">
         <div class="calculator__image">
           <!-- <img src="./images/bg-image.jpg" alt="exsample for use a card" /> -->
         </div>
@@ -72,8 +73,6 @@
                   type="text"
                   id="email"
                   minlength="8"
-                  placeholder="mymail@mail.com"
-                  title="mymail@mail.com"
                 />
 
                 <label
@@ -88,8 +87,6 @@
                   type="text"
                   id="telNumber"
                   minlength="8"
-                  placeholder="+38 (123) 4567890"
-                  title="+38 (123) 4567890"
                 />
               </div>
 
@@ -127,7 +124,6 @@
                 id="getCardInOfficeCheckbox"
                 type="checkbox"
                 name="getCardInOffice"
-                required
               />
               <div class="checkbox__checkmark"></div>
               <div class="checkbox__body">
@@ -141,15 +137,10 @@
             id="hasBlik"
           >
             <label class="checkbox style-g">
-              <input
-                id="hasBlikCheckbox"
-                type="checkbox"
-                name="hasBlik"
-                required
-              />
+              <input id="hasBlikCheckbox" type="checkbox" name="hasBlik" />
               <div class="checkbox__checkmark"></div>
               <div class="checkbox__body">
-                У Вас есть доступ к платежной системе BLIK? Готовы сделать
+                У Вас есть доступ к платежной системе BLIK и Вы готовы сделать
                 предоплату, получив при этом скидку минус 15zl от стоимости
                 карты?
               </div>
@@ -162,7 +153,6 @@
                 id="expeditedClearanceCheckbox"
                 type="checkbox"
                 name="expeditedClearance"
-                required
                 readonly
               />
               <div class="checkbox__checkmark"></div>
@@ -202,7 +192,7 @@
                 <div class="checkbox__body">Код 95 НЕ нужен</div>
               </label>
             </div>
-            <div>
+            <!-- <div>
               <label class="checkbox style-g category_CE">
                 <input
                   id="category_CE"
@@ -215,7 +205,7 @@
                   Трудоустройство водителем кат. СЕ
                 </div>
               </label>
-            </div>
+            </div> -->
           </li>
         </ul>
 

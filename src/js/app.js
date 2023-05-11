@@ -12,7 +12,6 @@ const discountsList = {
   noCode95: "0",
 };
 
-// создать переменную для category_CE = 100
 // создать переменные для стоимости доставки (все варианты)
 
 const refs = {
@@ -31,7 +30,7 @@ const refs = {
   selectedDeliveryMethod: document.querySelector("option[selected]"),
   textareaForOwnAdress: document.querySelector("#textareaForOwnAdress"),
   extraOpportunity: document.querySelector(".extra__opportunity"),
-  category_CE: document.querySelector("#category_CE"),
+  // category_CE: document.querySelector("#category_CE"),
 
   deliveryMethodsList: {
     ownAddresOption: document.querySelector("[data-addres='ownAddres']"),
@@ -55,14 +54,15 @@ calculatorForm.addEventListener("change", onChangeInputValue);
 calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
 
 function onCalculatorFormSubmit(event) {
+  event.preventDefault();
   console.log("hi");
-  // event.preventDefault();
   event.currentTarget.reset();
   console.log("hello");
 }
 
 function onChangeInputValue() {
   let procedure = null;
+
   if (
     refs.visitInOfficeCheckbox.checked &&
     !refs.expeditedClearanceCheckbox.checked
@@ -149,30 +149,42 @@ function onChangeInputValue() {
   const extraSum = procedure ? procedure : a;
   const deliverySum = refs.deliveryMethod.value;
 
-  const priceWithoutDiscount = +BASE_COST + +extraSum + +deliverySum;
+  // if (category_CE.checked) {
+  //   return (totalPriceValue.value = `${
+  //     +BASE_COST + +extraSum + +deliverySum - +refs.category_CE.value
+  //   }zl`);
+  // }
 
-  if (category_CE.checked) {
-    return (totalPriceValue.value = `${
-      +BASE_COST + +extraSum + +deliverySum - +refs.category_CE.value
-    }zl`);
-  }
+  // if (!category_CE.checked) {
+  //   let discount = getDiscount([
+  //     ...document.querySelectorAll(".chooseCode input"),
+  //   ]);
+  //   if (discount.value) {
+  //     return (totalPriceValue.value = `${
+  //       +BASE_COST + +extraSum + +deliverySum - +discount.value
+  //     }zl`);
+  //   }
 
-  if (!category_CE.checked) {
-    let discount = getDiscount([
-      ...document.querySelectorAll(".chooseCode input"),
-    ]);
-    if (discount.value) {
-      return (totalPriceValue.value = `${
-        +BASE_COST + +extraSum + +deliverySum - +discount.value
-      }zl`);
-    }
+  //   totalPriceValue.value = `${+BASE_COST + +extraSum + +deliverySum}zl`;
+  // }
 
+  const discount = getDiscount([
+    ...document.querySelectorAll(".chooseCode input"),
+  ]);
+
+  if (discount.value) {
+    totalPriceValue.value = `${
+      +BASE_COST + +extraSum + +deliverySum - +discount.value
+    }zl`;
+  } else {
     totalPriceValue.value = `${+BASE_COST + +extraSum + +deliverySum}zl`;
   }
-  // console.log("минимальная стоимость:", BASE_COST);
-  // console.log("доплата по выбранной процедуре", extraSum);
-  // console.log("стоимость доставки", deliverySum);
-  // console.log("ИТОГОВАЯ СТОИМОСТЬ:", totalPriceValue.value);
+
+  console.log("минимальная стоимость:", BASE_COST);
+  console.log("доплата по выбранной процедуре", extraSum);
+  console.log("стоимость доставки", deliverySum);
+  console.log("сумма скидки: ", discount.value);
+  console.log("ИТОГОВАЯ СТОИМОСТЬ:", totalPriceValue.value);
 }
 
 function getDiscount(arr) {
@@ -242,4 +254,4 @@ function removeClass(element, ...className) {
 // +++ картинка внутри формы
 
 // ПРЕДЛОЖЕНИЕ
-// отправить клиенту расшифровку суммы на почту (через алерт спросить нужно ли ему это)
+// +++ отправить клиенту расшифровку суммы на почту (через алерт спросить нужно ли ему это) - не нужно!
