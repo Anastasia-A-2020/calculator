@@ -69,7 +69,9 @@ function onCalculatorFormSubmit(event) {
   console.log("hi");
   event.currentTarget.reset();
   console.log("hello");
-  alert("Мы уточним адрес доставки после готовности карты.");
+  alert(
+    "Вашу заявку принято. Наш менеджер свяжется с вами для уточнения деталей."
+  );
 }
 
 function onChangeInputValue() {
