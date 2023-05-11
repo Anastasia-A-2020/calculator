@@ -1,0 +1,36 @@
+.extra__wrapper {
+  @media screen and (max-width: 479px) {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+.extra__opportunity {
+  margin-bottom: 1.25%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 2px solid #ffffff80;
+  border-bottom: 2px solid #ffffff80;
+}
+
+.extra__title {
+  margin-bottom: 10px;
+}
+
+.chooseCode {
+  list-style: none;
+
+  @media screen and (max-width: 479px) {
+    display: block;
+  }
+}
+
+.chooseCode:not(:last-child) {
+  margin-right: 20px;
+
+  @media screen and (max-width: 479px) {
+    margin-right: 0;
+  }
+}

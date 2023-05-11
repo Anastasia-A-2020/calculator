@@ -22,7 +22,7 @@
   max-width: 300px;
   min-width: 150px;
   border-radius: 4px;
-  padding: 1.25%;
+  padding: 3%;
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
@@ -50,24 +50,4 @@
 .calculatorForm__priceLabel {
   display: grid;
   text-transform: uppercase;
-}
-
-.extra__opportunity {
-  margin-bottom: 1.25%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-top: 2px solid #ffffff80;
-  border-bottom: 2px solid #ffffff80;
-}
-
-.chooseCode {
-  list-style: none;
-
-  @media screen and (max-width: 479px) {
-    display: block;
-  }
-}
-
-.chooseCode:not(:last-child) {
-  margin-right: 20px;
 }
