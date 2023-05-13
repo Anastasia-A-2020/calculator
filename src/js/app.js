@@ -72,7 +72,7 @@ function send(event, php) {
   req.open("POST", php, true);
   req.onload = function () {
     if (req.status >= 200 && req.status < 400) {
-      json = JSON.parse(this.response); // Ебанный internet explorer 11
+      json = JSON.parse(this.response); // internet explorer 11
       console.log(json);
 
       // ЗДЕСЬ УКАЗЫВАЕМ ДЕЙСТВИЯ В СЛУЧАЕ УСПЕХА ИЛИ НЕУДАЧИ
