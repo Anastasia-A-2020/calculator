@@ -16,7 +16,13 @@
   <body>
     <section class="calculator">
       <!-- class="calculator__form form" -->
-      <form class="calculatorForm" name="calcForm">
+      <form
+        onsubmit="send(event, 'send.php')"
+        action="send.php"
+        method="POST"
+        class="calculatorForm"
+        name="calcForm"
+      >
         <div class="calculator__image">
           <!-- <img src="./images/bg-image.jpg" alt="exsample for use a card" /> -->
         </div>
@@ -33,6 +39,7 @@
                   type="text"
                   id="email"
                   minlength="8"
+                  name="email"
                 />
 
                 <label
@@ -47,6 +54,7 @@
                   type="text"
                   id="telNumber"
                   minlength="8"
+                  name="phone"
                 />
               </div>
 
