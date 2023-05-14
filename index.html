@@ -15,20 +15,14 @@
   </head>
   <body>
     <section class="calculator">
-      <!-- class="calculator__form form" -->
-      <form
-        action="#"
-        method="POST"
-        class="calculator__form calculatorForm"
-        name="calcForm"
-      >
+      <form action="#" method="POST" class="calculator__form" name="calcForm">
         <div class="calculator__image">
           <!-- <img src="./images/bg-image.jpg" alt="exsample for use a card" /> -->
         </div>
-        <ul class="calculator__list calculatorForm__list">
-          <li class="calculator__item calculatorForm__item">
+        <ul class="calculator__list">
+          <li class="calculator__item">
             <!-- КОНТАКТЫ -->
-            <div class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
+            <div class="calculator__contacts contacts" id="contacts">
               <div class="contacts__wrapper">
                 <label for="email" class="contacts__label" title="email">
                   E-mail:
@@ -57,10 +51,10 @@
                 />
               </div>
 
-              <p class="textareaForOwnAdressLabel__text">Мой телефон есть в:</p>
-              <ul class="textareaForOwnAdressLabel__wrapper">
-                <li class="textareaForOwnAddres__item">
-                  <label for="Viber" class="textareaLabel checkbox style-g">
+              <p class="contacts__text">Мой телефон есть в:</p>
+              <ul class="contacts__list">
+                <li class="contacts__item">
+                  <label for="Viber" class="contacts__checkbox checkbox__style">
                     <input
                       class="contacts__input"
                       type="checkbox"
@@ -71,8 +65,11 @@
                     <div class="checkbox__body">Viber</div>
                   </label>
                 </li>
-                <li class="textareaForOwnAddres__item">
-                  <label for="Telegram" class="textareaLabel checkbox style-g">
+                <li class="contacts__item">
+                  <label
+                    for="Telegram"
+                    class="contacts__checkbox checkbox__style"
+                  >
                     <input
                       class="contacts__input"
                       type="checkbox"
@@ -83,8 +80,11 @@
                     <div class="checkbox__body">Telegram</div>
                   </label>
                 </li>
-                <li class="textareaForOwnAddres__item">
-                  <label for="WhatsApp" class="textareaLabel checkbox style-g">
+                <li class="contacts__item">
+                  <label
+                    for="WhatsApp"
+                    class="contacts__checkbox checkbox__style"
+                  >
                     <input
                       class="contacts__input"
                       type="checkbox"
@@ -98,7 +98,8 @@
               </ul>
             </div>
             <!-- КОНТАКТЫ конец-->
-            <label class="checkbox style-g">
+
+            <label class="checkbox__style">
               <input
                 id="visitInOfficeCheckbox"
                 type="checkbox"
@@ -112,12 +113,12 @@
             </label>
           </li>
 
-          <li class="calculatorForm__item">
-            <label for="deliveryMethod" class="select calculatorForm__title"
+          <li class="calculator__item">
+            <label for="deliveryMethod" class="calculator__subtitle select"
               >Выберите способ получения карты:
             </label>
             <select
-              class="deliveryMethod"
+              class="calculator__delivery"
               id="deliveryMethod"
               name="deliveryMethod"
             >
@@ -139,8 +140,8 @@
             </select>
           </li>
 
-          <li class="calculatorForm__item visually-hidden is-hidden">
-            <label class="checkbox style-g">
+          <li class="calculator__item visually-hidden is-hidden">
+            <label class="checkbox__style">
               <input
                 id="getCardInOfficeCheckbox"
                 type="checkbox"
@@ -153,11 +154,8 @@
             </label>
           </li>
 
-          <li
-            class="calculatorForm__item visually-hidden is-hidden"
-            id="hasBlik"
-          >
-            <label class="checkbox style-g">
+          <li class="calculator__item visually-hidden is-hidden" id="hasBlik">
+            <label class="checkbox__style">
               <input id="hasBlikCheckbox" type="checkbox" name="hasBlik" />
               <div class="checkbox__checkmark"></div>
               <div class="checkbox__body">
@@ -168,8 +166,8 @@
             </label>
           </li>
 
-          <li class="calculatorForm__item" id="expeditedClearance">
-            <label class="checkbox style-g">
+          <li class="calculator__item" id="expeditedClearance">
+            <label class="checkbox__style">
               <input
                 id="expeditedClearanceCheckbox"
                 type="checkbox"
@@ -181,12 +179,12 @@
             </label>
           </li>
 
-          <li class="calculatorForm__item extra__opportunity">
-            <div class="checkbox__body extra__title calculatorForm__title">
+          <li class="calculator__item extra__opportunity">
+            <div class="checkbox__body extra__title calculator__subtitle">
               Одновременно с картой мне требуется:
             </div>
             <div class="extra__wrapper">
-              <label class="checkbox style-g chooseCode">
+              <label class="checkbox__style chooseCode">
                 <input
                   id="shortCode95"
                   type="radio"
@@ -197,7 +195,7 @@
                 <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Короткий Код 95</div>
               </label>
-              <label class="checkbox style-g chooseCode">
+              <label class="checkbox__style chooseCode">
                 <input
                   id="longCode95"
                   type="radio"
@@ -208,7 +206,7 @@
                 <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Длинный Код 95</div>
               </label>
-              <label class="checkbox style-g chooseCode">
+              <label class="checkbox__style chooseCode">
                 <input
                   id="noCode95"
                   type="radio"
@@ -224,13 +222,13 @@
           </li>
         </ul>
 
-        <div class="calulator__footer form__footer">
-          <div class="form__amounts">
+        <div class="calulator__footer">
+          <div class="calulator__sums">
             <label
               id="Prepayment"
               for="PrepaymentValue"
               name="Prepayment"
-              class="calculatorForm__priceLabel"
+              class="calulator__price-label"
               >Предоплата:
             </label>
             <input
@@ -244,7 +242,7 @@
               id="Surcharge"
               for="SurchargeValue"
               name="Surcharge"
-              class="calculatorForm__priceLabel"
+              class="calulator__price-label"
               >Доплата в момент получения:
             </label>
             <input
@@ -258,7 +256,7 @@
               id="totalPrice"
               for="totalPriceValue"
               name="totalPrice"
-              class="calculatorForm__priceLabel"
+              class="calulator__price-label"
               >Итоговая стоимость:
             </label>
             <input
@@ -269,7 +267,7 @@
             />
           </div>
 
-          <button type="submit" class="form__btn-sabmit">Отправить</button>
+          <button type="submit" class="calulator__btn-sabmit">Отправить</button>
         </div>
       </form>
     </section>
