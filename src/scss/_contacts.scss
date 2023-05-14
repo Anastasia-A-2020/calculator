@@ -15,7 +15,7 @@
   padding: 5px;
 }
 
-.textareaForOwnAdressLabel {
+.contacts {
   display: block;
   margin-bottom: 1.25%;
   border-bottom: 2px solid #ffffff80;
@@ -31,7 +31,7 @@
   resize: none;
 }
 
-.textareaForOwnAddres__item {
+.contacts__item {
   list-style: none;
   display: inline-grid;
   margin-right: 25px;
@@ -41,7 +41,7 @@
   }
 }
 
-.textareaForOwnAdressLabel__text {
+.contacts__text {
   margin-top: 10px;
   margin-bottom: 10px;
 }

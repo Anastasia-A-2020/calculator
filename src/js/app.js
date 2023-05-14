@@ -34,7 +34,6 @@ const refs = {
     "#expeditedClearanceCheckbox"
   ),
   selectedDeliveryMethod: document.querySelector("option[selected]"),
-  textareaForOwnAdress: document.querySelector("#textareaForOwnAdress"),
   extraOpportunity: document.querySelector(".extra__opportunity"),
 
   surchargeSum: document.querySelector("#surchargeValue"),
@@ -58,7 +57,7 @@ const refs = {
   },
 };
 
-const calculatorForm = document.querySelector(".calculatorForm");
+const calculatorForm = document.querySelector(".calculator__form");
 const totalPriceValue = document.querySelector("#totalPriceValue");
 totalPriceValue.value = `${BASE_COST} zl`;
 calculatorForm.addEventListener("change", onChangeInputValue);
@@ -77,8 +76,6 @@ function onCalculatorFormSubmit(event) {
   const code95 = [...document.querySelectorAll(".extra__code95")]
     .filter(el => el.checked)
     .map(el => el.value);
-
-  console.log(code95);
 
   try {
     Email.send({
@@ -219,8 +216,8 @@ function removeClass(element, ...className) {
 // проверка на заполненность обязательных полей формы
 
 // +++ нужна ли детализация итоговой суммы? (клиенту - нет)
-// шаблон ответа на почту (сумма и детализация)
-// что делает кнопка отправить? отправляет уведомление на почту?
+// +++ шаблон ответа на почту (сумма и детализация)
+// +++ что делает кнопка отправить? отправляет уведомление на почту?
 // +++ если удаленная услуга, но есть блик, что делать? есть ли скидка 15?
 
 // +++ если приезжает в офис, то без блика

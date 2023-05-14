@@ -10,14 +10,14 @@
   }
 }
 
-.form__amounts {
+.calulator__sums {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   align-items: center;
 }
 
-.form__btn-sabmit {
+.calulator__btn-sabmit {
   display: block;
   max-width: 300px;
   min-width: 150px;
@@ -26,12 +26,12 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-}
 
-.form__btn-sabmit:hover,
-.form__btn-sabmit:focus {
-  background-color: $accent-bg-color;
-  color: $main-text-color-light;
+  &:hover,
+  &:focus {
+    background-color: $accent-bg-color;
+    color: $main-text-color-light;
+  }
 }
 
 .calculatorForm__price {
@@ -47,7 +47,7 @@
   min-width: 70px;
 }
 
-.calculatorForm__priceLabel {
+.calulator__price-label {
   display: grid;
   text-transform: uppercase;
 }
