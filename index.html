@@ -17,17 +17,16 @@
     <section class="calculator">
       <!-- class="calculator__form form" -->
       <form
-        onsubmit="send(event, './send.php')"
-        action="send.php"
+        action="#"
         method="POST"
-        class="calculatorForm"
+        class="calculator__form calculatorForm"
         name="calcForm"
       >
         <div class="calculator__image">
           <!-- <img src="./images/bg-image.jpg" alt="exsample for use a card" /> -->
         </div>
-        <ul class="calculatorForm__list">
-          <li class="calculatorForm__item">
+        <ul class="calculator__list calculatorForm__list">
+          <li class="calculator__item calculatorForm__item">
             <!-- КОНТАКТЫ -->
             <div class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
               <div class="contacts__wrapper">
@@ -62,21 +61,36 @@
               <ul class="textareaForOwnAdressLabel__wrapper">
                 <li class="textareaForOwnAddres__item">
                   <label for="Viber" class="textareaLabel checkbox style-g">
-                    <input type="checkbox" id="Viber" />
+                    <input
+                      class="contacts__input"
+                      type="checkbox"
+                      id="Viber"
+                      value="Viber"
+                    />
                     <div class="checkbox__checkmark"></div>
                     <div class="checkbox__body">Viber</div>
                   </label>
                 </li>
                 <li class="textareaForOwnAddres__item">
                   <label for="Telegram" class="textareaLabel checkbox style-g">
-                    <input type="checkbox" id="Telegram" />
+                    <input
+                      class="contacts__input"
+                      type="checkbox"
+                      id="Telegram"
+                      value="Telegram"
+                    />
                     <div class="checkbox__checkmark"></div>
                     <div class="checkbox__body">Telegram</div>
                   </label>
                 </li>
                 <li class="textareaForOwnAddres__item">
                   <label for="WhatsApp" class="textareaLabel checkbox style-g">
-                    <input type="checkbox" id="WhatsApp" />
+                    <input
+                      class="contacts__input"
+                      type="checkbox"
+                      id="WhatsApp"
+                      value="WhatsApp"
+                    />
                     <div class="checkbox__checkmark"></div>
                     <div class="checkbox__body">WhatsApp</div>
                   </label>
@@ -178,12 +192,19 @@
                   type="radio"
                   name="getCode"
                   value="75"
+                  class="extra__code95"
                 />
                 <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Короткий Код 95</div>
               </label>
               <label class="checkbox style-g chooseCode">
-                <input id="longCode95" type="radio" name="getCode" value="90" />
+                <input
+                  id="longCode95"
+                  type="radio"
+                  name="getCode"
+                  value="90"
+                  class="extra__code95"
+                />
                 <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Длинный Код 95</div>
               </label>
@@ -193,26 +214,13 @@
                   type="radio"
                   name="getCode"
                   value="0"
+                  class="extra__code95"
                   checked
                 />
                 <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Код 95 НЕ нужен</div>
               </label>
             </div>
-            <!-- <div>
-              <label class="checkbox style-g category_CE">
-                <input
-                  id="category_CE"
-                  type="checkbox"
-                  name="category_CE"
-                  value="100"
-                />
-                <div class="checkbox__checkmark"></div>
-                <div class="checkbox__body">
-                  Трудоустройство водителем кат. СЕ
-                </div>
-              </label>
-            </div> -->
           </li>
         </ul>
 
@@ -227,7 +235,7 @@
             </label>
             <input
               class="calculatorForm__price"
-              id="PrepaymentValue"
+              id="prepaymentValue"
               type="text"
               readonly
             />
@@ -241,7 +249,7 @@
             </label>
             <input
               class="calculatorForm__price"
-              id="SurchargeValue"
+              id="surchargeValue"
               type="text"
               readonly
             />
@@ -265,48 +273,7 @@
         </div>
       </form>
     </section>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="./dist/js/script.min.js"></script>
   </body>
 </html>
-
-<!-- АДРЕС С ПОЛЯМИ -->
-<!-- <div class="textareaForOwnAdressLabel" id="textareaForOwnAdress">
-              <p class="textareaForOwnAdressLabel__text">
-                Введите адрес доставки:
-              </p>
-              <ul class="textareaForOwnAdressLabel__wrapper">
-                <li class="textareaForOwnAddres__item">
-                  <label for="index" class="textareaLabel" title="index">
-                    Индекс:
-                  </label>
-                  <input type="text" id="index" minlength="5" />
-                </li>
-                <li class="textareaForOwnAddres__item">
-                  <label for="city" class="textareaLabel" title="city">
-                    Город:
-                  </label>
-                  <input type="text" id="city" />
-                </li>
-                <li class="textareaForOwnAddres__item">
-                  <label for="street" class="textareaLabel" title="street">
-                    Улица:
-                  </label>
-                  <input type="text" id="street" />
-                </li>
-                <li class="textareaForOwnAddres__item">
-                  <label for="house" class="textareaLabel" title="house"
-                    >Дом: </label
-                  ><input type="text" id="house" />
-                </li>
-                <li class="textareaForOwnAddres__item">
-                  <label
-                    for="apartment"
-                    class="textareaLabel"
-                    title="apartment"
-                  >
-                    Квартира:
-                  </label>
-                  <input type="text" id="apartment" />
-                </li>
-              </ul>
-            </div> -->

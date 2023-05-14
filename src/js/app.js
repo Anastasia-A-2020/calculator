@@ -36,10 +36,12 @@ const refs = {
   selectedDeliveryMethod: document.querySelector("option[selected]"),
   textareaForOwnAdress: document.querySelector("#textareaForOwnAdress"),
   extraOpportunity: document.querySelector(".extra__opportunity"),
-  // category_CE: document.querySelector("#category_CE"),
 
-  surchargeSum: document.querySelector("#SurchargeValue"),
-  prepaymentSum: document.querySelector("#PrepaymentValue"),
+  surchargeSum: document.querySelector("#surchargeValue"),
+  prepaymentSum: document.querySelector("#prepaymentValue"),
+
+  formEmail: document.querySelector("#email"),
+  formTel: document.querySelector("#telNumber"),
 
   deliveryMethodsList: {
     ownAddresOption: document.querySelector("[data-addres='ownAddres']"),
@@ -65,45 +67,40 @@ calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
 refs.prepaymentSum.value = `${BASE_COST} zl`;
 refs.surchargeSum.value = `0 zl`;
 
-function send(event, php) {
-  console.log("Отправка запроса");
-  event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-  var req = new XMLHttpRequest();
-  req.open("POST", php, true);
-  req.onload = function () {
-    if (req.status >= 200 && req.status < 400) {
-      json = JSON.parse(this.response); // internet explorer 11
-      console.log(json);
-
-      // ЗДЕСЬ УКАЗЫВАЕМ ДЕЙСТВИЯ В СЛУЧАЕ УСПЕХА ИЛИ НЕУДАЧИ
-      if (json.result == "success") {
-        // Если сообщение отправлено
-        alert("Сообщение отправлено");
-      } else {
-        // Если произошла ошибка
-        alert("Ошибка. Сообщение не отправлено");
-      }
-      // Если не удалось связаться с php файлом
-    } else {
-      alert("Ошибка сервера. Номер: " + req.status);
-    }
-  };
-
-  // Если не удалось отправить запрос. Стоит блок на хостинге
-  req.onerror = function () {
-    alert("Ошибка отправки запроса");
-  };
-  req.send(new FormData(event.target));
-}
-
 function onCalculatorFormSubmit(event) {
   event.preventDefault();
-  console.log("hi");
+
+  const myPhoneIsIn = [...document.querySelectorAll(".contacts__input")]
+    .filter(el => el.checked)
+    .map(el => el.value);
+
+  const code95 = [...document.querySelectorAll(".extra__code95")]
+    .filter(el => el.checked)
+    .map(el => el.value);
+
+  console.log(code95);
+
+  try {
+    Email.send({
+      SecureToken: "",
+      To: "",
+      From: "",
+
+      Subject: "ЗАЯВКА С ФОРМЫ",
+      Body: `"Почта": ${refs.formEmail.value}, <br/>
+    "Телефон": ${refs.formTel.value}, <br/>
+    "Мой телефон есть в": ${myPhoneIsIn}, <hr/>
+    "Одновременно с картой мне нужно оформить": ${code95}, <hr/>
+    "Предоплата": ${refs.prepaymentSum.value} <br/>
+    "Доплата в момент получения":${refs.surchargeSum.value} <br/>
+    "Итоговая стоимость": ${totalPriceValue.value} <br/>
+    `,
+    }).then(message => alert(message));
+  } catch (error) {
+    alert("Не удалось отправить заявку");
+  }
+
   event.currentTarget.reset();
-  console.log("hello");
-  // alert(
-  //   "Вашу заявку принято. Наш менеджер свяжется с вами для уточнения деталей."
-  // );
 }
 
 function onChangeInputValue() {
@@ -127,29 +124,11 @@ function onChangeInputValue() {
   if (refs.visitInOfficeCheckbox.checked) {
     addClass(refs.hasBlik, "visually-hidden", "is-hidden");
     removeClass(refs.expeditedClearance, "visually-hidden", "is-hidden");
-
-    // refs.selectedDeliveryMethod?.setAttribute("selected", false);
-    // for (const value in Object.values(refs.deliveryMethodsList)) {
-    //   const optionValue = Object.values(refs.deliveryMethodsList)[value];
-    //   if (
-    //     optionValue.dataset.addres === "getInOffice" ||
-    //     optionValue.dataset.addres === "ownAddres"
-    //   ) {
-    //     continue;
-    //   }
-    //   optionValue.setAttribute("disabled", true);
-    // }
-    // refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
   }
 
   if (!refs.visitInOfficeCheckbox.checked) {
     refs.expeditedClearanceCheckbox.checked = true;
     addClass(refs.expeditedClearance, "visually-hidden", "is-hidden");
-    // for (const value in Object.values(refs.deliveryMethodsList)) {
-    //   Object.values(refs.deliveryMethodsList)[value].removeAttribute(
-    //     "disabled"
-    //   );
-    // }
 
     if (refs.deliveryMethodsList.getInOfficeOption.selected) {
       removeClass(refs.hasBlik, "visually-hidden", "is-hidden");
@@ -197,25 +176,6 @@ function onChangeInputValue() {
 
   const extraSum = procedure ? procedure : a;
   const deliverySum = refs.deliveryMethod.value;
-
-  // if (category_CE.checked) {
-  //   return (totalPriceValue.value = `${
-  //     +BASE_COST + +extraSum + +deliverySum - +refs.category_CE.value
-  //   }zl`);
-  // }
-
-  // if (!category_CE.checked) {
-  //   let discount = getDiscount([
-  //     ...document.querySelectorAll(".chooseCode input"),
-  //   ]);
-  //   if (discount.value) {
-  //     return (totalPriceValue.value = `${
-  //       +BASE_COST + +extraSum + +deliverySum - +discount.value
-  //     }zl`);
-  //   }
-
-  //   totalPriceValue.value = `${+BASE_COST + +extraSum + +deliverySum}zl`;
-  // }
 
   const discount = getDiscount([
     ...document.querySelectorAll(".chooseCode input"),
