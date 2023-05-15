@@ -57,6 +57,11 @@ const refs = {
   },
 };
 
+const EMAIL_REGEXP =
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
+// const input = document.querySelector("input");
+
 const calculatorForm = document.querySelector(".calculator__form");
 const totalPriceValue = document.querySelector("#totalPriceValue");
 totalPriceValue.value = `${BASE_COST} zl`;
@@ -65,6 +70,8 @@ calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
 
 refs.prepaymentSum.value = `${BASE_COST} zl`;
 refs.surchargeSum.value = `0 zl`;
+
+refs.formEmail.addEventListener("input", onInput);
 
 function onCalculatorFormSubmit(event) {
   event.preventDefault();
@@ -84,13 +91,13 @@ function onCalculatorFormSubmit(event) {
       From: "",
 
       Subject: "ЗАЯВКА С ФОРМЫ",
-      Body: `"Почта": ${refs.formEmail.value}, <br/>
-    "Телефон": ${refs.formTel.value}, <br/>
-    "Мой телефон есть в": ${myPhoneIsIn}, <hr/>
-    "Одновременно с картой мне нужно оформить": ${code95}, <hr/>
-    "Предоплата": ${refs.prepaymentSum.value} <br/>
-    "Доплата в момент получения":${refs.surchargeSum.value} <br/>
-    "Итоговая стоимость": ${totalPriceValue.value} <br/>
+      Body: `'Почта': ${refs.formEmail.value}, <br/>
+            'Телефон': ${refs.formTel.value}, <br/>
+            'Мой телефон есть в': ${myPhoneIsIn}, <hr/>
+            'Одновременно с картой мне нужно оформить': ${code95}, <hr/>
+            'Предоплата': ${refs.prepaymentSum.value} <br/>
+            'Доплата в момент получения": ${refs.surchargeSum.value} <br/>
+            'Итоговая стоимость': ${totalPriceValue.value} <br/>
     `,
     }).then(message => alert(message));
   } catch (error) {
@@ -207,6 +214,18 @@ function addClass(element, ...className) {
 
 function removeClass(element, ...className) {
   return element.classList.remove(...className);
+}
+
+function onInput() {
+  if (isEmailValid(refs.formEmail.value)) {
+    refs.formEmail.style.borderColor = "green";
+  } else {
+    refs.formEmail.style.borderColor = "red";
+  }
+}
+
+function isEmailValid(value) {
+  return EMAIL_REGEXP.test(value);
 }
 
 // localStorage
