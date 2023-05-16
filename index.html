@@ -47,6 +47,7 @@
                   type="text"
                   id="telNumber"
                   minlength="8"
+                  maxlength="17"
                   name="phone"
                   placeholder=" "
                   required
@@ -101,7 +102,7 @@
             </div>
             <!-- КОНТАКТЫ конец-->
 
-            <label class="checkbox__style">
+            <!-- <label class="checkbox__style">
               <input
                 id="visitInOfficeCheckbox"
                 type="checkbox"
@@ -112,7 +113,35 @@
               <div class="checkbox__body">
                 Вы готовы приехать лично на подачу документов?
               </div>
-            </label>
+            </label> -->
+
+            <div class="checkbox__body">
+              Вы готовы приехать лично на подачу документов?
+
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="comeToOffice"
+                  type="radio"
+                  name="readyToComeInOffice"
+                  value="yes"
+                  class="extra__code950"
+                  checked
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Да</div>
+              </label>
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="dontComeInOffice"
+                  type="radio"
+                  name="readyToComeInOffice"
+                  value="no"
+                  class="extra__code950"
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Нет</div>
+              </label>
+            </div>
           </li>
 
           <li class="calculator__item">
@@ -124,19 +153,22 @@
               id="deliveryMethod"
               name="deliveryMethod"
             >
-              <option value="0" data-addres="ownAddres" selected>
+              <option id="ownAddres" data-addres="ownAddres" selected>
                 свой адрес (с личным получением заказного письма)
               </option>
-              <option value="25" data-addres="getInOffice">
+              <option id="getInOffice" data-addres="getInOffice">
                 получение в офисе
               </option>
-              <option value="75" data-addres="shippmentInPoland">
+              <option id="shippmentInPoland" data-addres="shippmentInPoland">
                 пересылка по Польше (без необходимости личного получения)
               </option>
-              <option value="125" data-addres="shipmentInternational">
+              <option
+                id="shipmentInternational"
+                data-addres="shipmentInternational"
+              >
                 пересылка международная (кроме РФ)
               </option>
-              <option value="200" data-addres="shipmenttoTheRF">
+              <option id="shipmenttoTheRF" data-addres="shipmenttoTheRF">
                 пересылка в РФ
               </option>
             </select>
@@ -191,9 +223,9 @@
                   id="shortCode95"
                   type="radio"
                   name="getCode"
-                  value="75"
                   class="extra__code95"
                 />
+                <!-- value="75" -->
                 <div class="checkbox__checkmark radio"></div>
                 <div class="checkbox__body">Короткий Код 95</div>
               </label>
@@ -202,7 +234,6 @@
                   id="longCode95"
                   type="radio"
                   name="getCode"
-                  value="90"
                   class="extra__code95"
                 />
                 <div class="checkbox__checkmark radio"></div>
@@ -213,7 +244,6 @@
                   id="noCode95"
                   type="radio"
                   name="getCode"
-                  value="0"
                   class="extra__code95"
                   checked
                 />

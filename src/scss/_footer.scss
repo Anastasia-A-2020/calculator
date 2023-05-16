@@ -27,6 +27,8 @@
   border-radius: 4px;
   padding: 3%;
   text-transform: uppercase;
+  color: $main-text-color-dark;
+  background-color: $main-text-color-light;
   cursor: pointer;
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 
@@ -34,6 +36,13 @@
   &:focus {
     background-color: $accent-bg-color;
     color: $main-text-color-light;
+  }
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
+    background-color: $dark-bg-color;
+    color: $main-text-color-dark;
   }
 }
 

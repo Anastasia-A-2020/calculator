@@ -55,7 +55,7 @@
 
 .calculator__image {
   height: 10rem;
-  background-color: cornflowerblue;
+  background-color: $dark-bg-color;
   background-image: url("../images/bg-image.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -63,8 +63,12 @@
 }
 
 .calculator__subtitle {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   text-align: center;
+
+  &.select {
+    display: block;
+  }
 }
 
 .calculator__delivery {

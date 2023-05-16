@@ -1,28 +1,33 @@
-const BASE_COST = 487;
+const BASE_COST = "487"; // базовая цена карты
 
-const a = "0";
-const b = "80";
-const c = "130";
-const d = "145"; // +145 +25 (437 + 220)
-const e = "190";
+const a = "0"; // "ОФИС-25"
+const b = "80"; //  "ОФИС-12"
+const c = "130"; // "БЛИК"
+const d = "145"; // "РАССРОЧКА" 487 +145 +25 = (437 + 220)
+const e = "190"; // "УДАЛЁННАЯ"
 
 const discountsList = {
-  shortCode95: "75",
-  longCode95: "90",
-  noCode95: "0",
+  shortCode95: "75", // скидка при одновременнос оформлении карты и короткого кода 95
+  longCode95: "90", // скидка при одновременнос оформлении карты и длинного кода 95
+  noCode95: "0", // если нужна только карта
 };
 
 const deliveryPrices = {
-  getInoffice: 25,
+  ownAddres: "0", // свой адрес (с личным получением заказного письма)
+  getInOffice: "25", // получение в офисе
+  shippmentInPoland: "75", // пересылка по Польше
+  shipmentInternational: "125", // международная пересылка, кроме РФ
+  shipmenttoTheRF: "200", // пересылка в РФ
 };
 
-const surchargeSumForProcedureD = "220 zl";
+const surchargeSumForProcedureD = "220 zl"; //доплата по процедуре Рассрочка (Д)
 
 const refs = {
+  calculatorForm: document.querySelector(".calculator__form"),
+  totalPriceValue: document.querySelector("#totalPriceValue"),
   expeditedClearanceCheckbox: document.getElementById(
     "expeditedClearanceCheckbox"
   ),
-  visitInOfficeCheckbox: document.getElementById("visitInOfficeCheckbox"),
   getCardInOfficeCheckbox: document.getElementById("getCardInOfficeCheckbox"),
   hasBlikCheckbox: document.getElementById("hasBlikCheckbox"),
   deliveryMethod: document.querySelector("#deliveryMethod"),
@@ -39,6 +44,7 @@ const refs = {
 
   formEmail: document.querySelector("#email"),
   formTel: document.querySelector("#telNumber"),
+  btnSabmit: document.querySelector(".calulator__btn-sabmit"),
 
   deliveryMethodsList: {
     ownAddresOption: document.querySelector("[data-addres='ownAddres']"),
@@ -58,16 +64,28 @@ const refs = {
 const EMAIL_REGEXP =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
-const calculatorForm = document.querySelector(".calculator__form");
-const totalPriceValue = document.querySelector("#totalPriceValue");
-totalPriceValue.value = `${BASE_COST} zl`;
-calculatorForm.addEventListener("change", onChangeInputValue);
-calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
+document.getElementById("ownAddres").value = deliveryPrices.ownAddres;
+document.getElementById("getInOffice").value = deliveryPrices.getInOffice;
+document.getElementById("shippmentInPoland").value =
+  deliveryPrices.shippmentInPoland;
+document.getElementById("shipmentInternational").value =
+  deliveryPrices.shipmentInternational;
 
-refs.prepaymentSum.value = `${BASE_COST} zl`;
+document.getElementById("shipmenttoTheRF").value =
+  deliveryPrices.shipmenttoTheRF;
+
+document.querySelector("#shortCode95").value = discountsList.shortCode95;
+document.querySelector("#longCode95").value = discountsList.longCode95;
+document.querySelector("#noCode95").value = discountsList.noCode95;
+
+refs.totalPriceValue.value = `${parseInt(BASE_COST)} zl`;
+refs.calculatorForm.addEventListener("change", onChangeInputValue);
+refs.calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
+refs.prepaymentSum.value = `${parseInt(BASE_COST)} zl`;
 refs.surchargeSum.value = `0 zl`;
 
 refs.formEmail.addEventListener("input", onInput);
+refs.formTel.addEventListener("input", onInputTel);
 
 function onCalculatorFormSubmit(event) {
   event.preventDefault();
@@ -78,22 +96,30 @@ function onCalculatorFormSubmit(event) {
 
   const code95 = [...document.querySelectorAll(".extra__code95")]
     .filter(el => el.checked)
-    .map(el => el.value);
+    .map(el => {
+      return {
+        value: el.value,
+        id: el.id,
+      };
+    });
+  code95.forEach(el => {
+    return ({ id: idCode95, value: valueCode95 } = el);
+  });
 
   try {
     Email.send({
-      SecureToken: "",
-      To: "",
-      From: "",
+      SecureToken: "62858ea7-1d3a-4ba2-bc6a-1e5656d45026",
+      To: "a-a2018@ukr.net",
+      From: "a-a2018@ukr.net",
 
       Subject: "ЗАЯВКА С ФОРМЫ",
-      Body: `'Почта': ${refs.formEmail.value}, <br/>
-            'Телефон': ${refs.formTel.value}, <br/>
-            'Мой телефон есть в': ${myPhoneIsIn}, <hr/>
-            'Одновременно с картой мне нужно оформить': ${code95}, <hr/>
-            'Предоплата': ${refs.prepaymentSum.value} <br/>
-            'Доплата в момент получения": ${refs.surchargeSum.value} <br/>
-            'Итоговая стоимость': ${totalPriceValue.value} <br/>
+      Body: `'Почта:' &#x20; ${refs.formEmail.value}, <br/>
+            'Телефон:' &#x20; ${refs.formTel.value}, <br/>
+            'Мой телефон есть в:' &#x20; ${myPhoneIsIn}, <hr/>
+            'Одновременно с картой мне нужно оформить:' &#x20;  ${idCode95} &#x20; = &#x20; ${valueCode95}, <hr/>
+            'Предоплата:' &#x20; ${refs.prepaymentSum.value} <br/>
+            'Доплата в момент получения:' &#x20;  ${refs.surchargeSum.value} <br/>
+            'Итоговая стоимость:' &#x20; ${refs.totalPriceValue.value} <br/>
     `,
     }).then(message => alert(message));
   } catch (error) {
@@ -105,28 +131,26 @@ function onCalculatorFormSubmit(event) {
 
 function onChangeInputValue() {
   let procedure = null;
+  const visitInOffice = document.querySelector("#comeToOffice").checked;
 
-  if (
-    refs.visitInOfficeCheckbox.checked &&
-    !refs.expeditedClearanceCheckbox.checked
-  ) {
+  if (visitInOffice && !refs.expeditedClearanceCheckbox.checked) {
     procedure = a;
   }
 
   if (refs.deliveryMethodsList.getInOfficeOption.selected) {
     refs.getCardInOfficeCheckbox.checked = true;
-    refs.surchargeSum.value = `${parseInt(deliveryPrices.getInoffice)} zl`;
+    refs.surchargeSum.value = `${parseInt(deliveryPrices.getInOffice)} zl`;
   } else {
     refs.getCardInOfficeCheckbox.checked = false;
     refs.surchargeSum.value = `0 zl`;
   }
 
-  if (refs.visitInOfficeCheckbox.checked) {
+  if (visitInOffice) {
     addClass(refs.hasBlik, "visually-hidden", "is-hidden");
     removeClass(refs.expeditedClearance, "visually-hidden", "is-hidden");
   }
 
-  if (!refs.visitInOfficeCheckbox.checked) {
+  if (!visitInOffice) {
     refs.expeditedClearanceCheckbox.checked = true;
     addClass(refs.expeditedClearance, "visually-hidden", "is-hidden");
 
@@ -140,15 +164,12 @@ function onChangeInputValue() {
     refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
   }
 
-  if (
-    refs.visitInOfficeCheckbox.checked &&
-    refs.expeditedClearanceCheckbox.checked
-  ) {
+  if (visitInOffice && refs.expeditedClearanceCheckbox.checked) {
     procedure = b;
   }
 
   if (
-    !refs.visitInOfficeCheckbox.checked &&
+    !visitInOffice &&
     refs.expeditedClearanceCheckbox.checked &&
     refs.getCardInOfficeCheckbox.checked &&
     refs.hasBlikCheckbox.checked
@@ -157,7 +178,7 @@ function onChangeInputValue() {
   }
 
   if (
-    !refs.visitInOfficeCheckbox.checked &&
+    !visitInOffice &&
     refs.expeditedClearanceCheckbox.checked &&
     refs.getCardInOfficeCheckbox.checked &&
     !refs.hasBlikCheckbox.checked
@@ -167,7 +188,7 @@ function onChangeInputValue() {
   }
 
   if (
-    !refs.visitInOfficeCheckbox.checked &&
+    !visitInOffice &&
     refs.expeditedClearanceCheckbox.checked &&
     !refs.getCardInOfficeCheckbox.checked
   ) {
@@ -182,16 +203,31 @@ function onChangeInputValue() {
   ]);
 
   if (discount.value) {
-    totalPriceValue.value = `${
-      +BASE_COST + +extraSum + +deliverySum - +discount.value
+    refs.totalPriceValue.value = `${
+      parseInt(BASE_COST) +
+      parseInt(extraSum) +
+      parseInt(deliverySum) -
+      parseInt(discount.value)
     } zl`;
   } else {
-    totalPriceValue.value = `${+BASE_COST + +extraSum + +deliverySum} zl`;
+    refs.totalPriceValue.value = `${
+      parseInt(BASE_COST) + parseInt(extraSum) + parseInt(deliverySum)
+    } zl`;
   }
 
   refs.prepaymentSum.value = `${
-    parseInt(totalPriceValue.value) - parseInt(refs.surchargeSum.value)
+    parseInt(refs.totalPriceValue.value) - parseInt(refs.surchargeSum.value)
   } zl`;
+
+  if (
+    isEmailValid(refs.formEmail.value) &&
+    String(refs.formTel.value).length > 7 &&
+    String(refs.formTel.value).length < 17
+  ) {
+    refs.btnSabmit.removeAttribute("disabled");
+  } else {
+    refs.btnSabmit.setAttribute("disabled", "disabled");
+  }
 }
 
 function getDiscount(arr) {
@@ -208,9 +244,20 @@ function removeClass(element, ...className) {
 
 function onInput() {
   if (isEmailValid(refs.formEmail.value)) {
-    refs.formEmail.style.borderColor = "green";
+    refs.formEmail.style.borderColor = "#2E8B57cc";
   } else {
-    refs.formEmail.style.borderColor = "red";
+    refs.formEmail.style.borderColor = "#CD5C5Ccc";
+  }
+}
+
+function onInputTel() {
+  if (
+    String(refs.formTel.value).length > 7 &&
+    String(refs.formTel.value).length < 17
+  ) {
+    refs.formTel.style.borderColor = "#2E8B57cc";
+  } else {
+    refs.formTel.style.borderColor = "#CD5C5Ccc";
   }
 }
 
