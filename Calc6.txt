@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./dist/css/style.min.css" />
+  </head>
+  <body>
+    <section class="calculator">
+<style>
+html{box-sizing:border-box}*,::after,::before{box-sizing:inherit}body{margin:0;font-family:"Open Sans",sans-serif;font-weight:400;font-size:14px;color:#212121}h1,h2,h3,h4,h5,h6,p{margin:0}button,ol,ul{margin:0;padding:0}img{display:block;height:auto}.visually-hidden{position:absolute;white-space:nowrap;width:1px;height:1px;overflow:hidden;border:0;padding:0;clip:rect(0 0 0 0);-webkit-clip-path:inset(50%);clip-path:inset(50%);margin:-1px}.calculator{width:100%;background-color:#19545e;padding:1rem}@media screen and (max-width:479px){.calculator{padding:0}}.calculator__form{max-width:580px;min-width:320px;margin-right:auto;margin-left:auto;border:2px solid #fff;border-radius:4px;font-size:14px;line-height:1.5;color:#fff}.calculator__list,.calulator__footer{padding:1rem}@media screen and (max-width:479px){.calculator__list,.calulator__footer{padding:.5rem .5rem 10px}.calculator__subtitle{text-align:center}}.calulator__footer{padding-top:0}.calculator__item{list-style:none;opacity:1;transition:opacity .25s ease-in-out;font-size:inherit}.calculator__item:not(:last-child){margin-bottom:15px}.calculator__item.is-hidden{opacity:0;pointer-events:none}.calculator__item.is-hidden .checkbox{transform:scale(.9)}.calculator__image{height:10rem;background-color:#19545e;background-image:url(https://www.ocrk.pl/wp-content/uploads/2019/07/wyjmowanie-karty-z-tachografu.jpg);background-repeat:no-repeat;background-position:center;background-size:cover}.calculator__text{border-radius:4px;padding:3px 5px;background-color:rgba(0,0,0,.5019607843);text-transform:uppercase;font-weight:700}.calculator__subtitle{margin-bottom:10px}.calculator__subtitle.select{display:block;margin-bottom:5px}.calculator__visit{text-align:center}.calculator__delivery{margin-bottom:1.25%;font-size:14px;padding:4px;border-radius:4px}.calculator__link{font-weight:700;cursor:pointer;color:inherit}.calculator__link:focus,.calculator__link:hover{color:#bf9000}.contacts__chip,.contacts__pay{margin-bottom:10px}.checkbox__style{display:inline-block;position:relative;padding-right:30px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none;transition:transform .25s ease-in-out}.checkbox__style input{position:absolute;opacity:0;cursor:pointer;height:0;width:0}.checkbox__style input:checked~.checkbox__checkmark{background-color:#fff}.checkbox__style input:checked~.checkbox__checkmark:after{opacity:1;left:8px}.checkbox__style:hover input:checked~.checkbox__checkmark,.checkbox__style:hover input~.checkbox__checkmark{background-color:#eee}.checkbox__style .checkbox__checkmark{position:absolute;top:1px;right:0;height:20px;width:20px;background-color:#eee;transition:background-color .25s;border-radius:4px}.checkbox__style .checkbox__checkmark.radio{border-radius:50%;height:20px;width:20px}.checkbox__style .checkbox__checkmark.radio:after{top:50%;left:50%;border-radius:50%;width:10px;height:10px;border-width:2px;background-color:#bf9000;transform:translate(-30%,-50%)}.checkbox__style .checkbox__checkmark:after{content:"";position:absolute;left:-18px;top:-6px;width:14px;height:20px;border:solid #bf9000;border-width:0 4px 4px 0;transform:rotate(45deg);opacity:0;transition:opacity .25s,left .25s}.checkbox__style .checkbox__body{color:#fff;line-height:1.3;font-size:14px}.checkbox__radio:not(:last-child){margin-right:15px}@media screen and (max-width:479px){.calculator__delivery{font-size:12px}.clearance .checkbox__radio:not(:last-child){margin-right:0}}.clearance{display:grid;grid-template-columns:1fr 1fr;gap:80px;font-size:14px}.extra__opportunity{margin-bottom:1.25%;padding-top:10px;padding-bottom:15px;border-top:2px solid rgba(255,255,255,.5019607843);border-bottom:2px solid rgba(255,255,255,.5019607843);font-size:14px}.chooseCode{list-style:none}.chooseCode:not(:last-child){margin-right:20px}@media screen and (max-width:479px){.clearance{grid-template-columns:none;gap:15px;justify-content:center;align-items:center}.extra__wrapper{display:grid;align-items:center;justify-content:center;gap:10px}.chooseCode{display:block;padding-top:5px;padding-left:5px;padding-bottom:5px}.chooseCode:not(:last-child){margin-right:0}}.contacts__wrapper{display:grid;align-items:baseline}.contacts__label:not(:last-of-type){margin-bottom:5px}.contacts__input{outline:0;border:4px solid transparent;margin-bottom:15px;border-radius:4px;padding:5px}.contacts__input::-webkit-inner-spin-button{display:none}.contacts__input--resize{resize:none}.contacts{display:block;margin-bottom:1.25%;border-bottom:2px solid rgba(255,255,255,.5019607843);padding-top:10px;padding-bottom:10px;font-size:14px}.contacts__item{list-style:none;display:inline-grid;margin-right:25px}.contacts__text{margin-bottom:5px}.contacts__list{margin-bottom:15px}.contacts__address{margin-bottom:5px}.form__footer{display:grid;justify-items:center;gap:10px}@media screen and (max-width:479px){.contacts__item{margin-right:15px}.form__footer{padding:10px;justify-items:center;gap:10px}}.footer__payment{margin-top:15px;padding-bottom:15px;border-bottom:2px solid rgba(255,255,255,.5019607843)}.footer_variable{display:flex;justify-content:space-between}.calulator__sums{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center}.calulator__btn,.calulator__btn-sabmit{display:block;margin-top:15px;margin-right:auto;margin-left:auto;max-width:300px;min-width:150px;border-radius:4px;border:none;padding:3%;line-height:1.7;font-size:12px;text-decoration:none;text-transform:uppercase;color:#212121;background-color:#fff;cursor:pointer;transition:background-color .25s ease-in-out,color .25s ease-in-out}.calulator__btn-sabmit:focus,.calulator__btn-sabmit:hover,.calulator__btn:focus,.calulator__btn:hover{background-color:#f41616;color:#fff}.calulator__btn-sabmit:disabled,.calulator__btn-sabmit:disabled:focus,.calulator__btn-sabmit:disabled:hover,.calulator__btn:disabled,.calulator__btn:disabled:focus,.calulator__btn:disabled:hover{background-color:#19545e;color:#212121}.calulator__btn{padding:1%;align-items:center;text-align:center;width:250px}.calculatorForm__price{outline:0;border-radius:4px;text-align:center;padding:5px;font-size:14px;background-color:#bf9000;color:#fff;min-width:70px}.calulator__price-label{display:grid;text-transform:uppercase}.modal{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1);width:450px;min-height:270px;padding:20px;background-color:#fff;color:#fff;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 1px rgba(0,0,0,.14),0 2px 1px rgba(0,0,0,.2);transition:transform 250ms ease-in-out}@media screen and (max-width:479px){.modal{width:300px}}.modal__form{padding:10px}.modal__circuse{position:relative;margin-right:auto;margin-left:auto;margin-bottom:15px;width:80px;height:80px;border-radius:50%;background-color:#19545e}.modal__icon-like{display:inline-block;position:absolute;top:27%;left:25px;stroke:#fff;fill:#fff}.backdrop.is-hidden .modal{transform:translate(-50%,-50%) scale(.85)}.modal__text{font-weight:700;font-size:20px;line-height:1.5;text-align:center;color:#212121}@media screen and (max-width:479px){.modal__text{line-height:1.15}}.modal__submit{display:flex;width:100px;min-height:50px;border:none;margin-left:auto;margin-right:auto;margin-top:15px;box-shadow:0 4px 4px rgba(0,0,0,.15);border-radius:4px;cursor:pointer;justify-content:center;align-items:center;font-weight:700;font-size:16px;line-height:1.875;letter-spacing:.06em;background-color:#bf9000;color:#fff;text-decoration:none;transition:background-color 250ms ease-in-out}.modal__submit:focus,.modal__submit:hover{background-color:#f41616}.backdrop{position:fixed;top:0;left:0;width:100%;height:100%;opacity:1;background-color:rgba(0,0,0,.7);overflow-y:scroll;transition:opacity 250ms ease-in-out}.backdrop.is-hidden{opacity:0;pointer-events:none}
+</style>
+
+      <form id="calculator__form" class="calculator__form" name="calcForm">
+        <div class="calculator__image"></div>
+        <ul class="calculator__list">
+          <li class="calculator__item">
+            <div class="checkbox__body calculator__subtitle">
+              Подача документов?
+            </div>
+            <div class="calculator__visit">
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="comeToOffice"
+                  type="radio"
+                  name="readyToComeInOffice"
+                  value="yes"
+                  checked
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Лично в Варшаве</div>
+              </label>
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="dontComeInOffice"
+                  type="radio"
+                  name="readyToComeInOffice"
+                  value="no"
+                  class="extra__code950"
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Дистанционно</div>
+              </label>
+            </div>
+          </li>
+
+          <li class="calculator__item">
+            <label for="deliveryMethod" class="calculator__subtitle select"
+              >Выберите способ получения карты:
+            </label>
+            <select
+              class="calculator__delivery"
+              id="deliveryMethod"
+              name="deliveryMethod"
+            >
+              <option
+                id="ownAddres"
+                data-addres="ownAddres"
+                data-delivery="свой адрес"
+                selected
+              >
+                ваш адрес в Польше - личное получение заказного письма!
+              </option>
+              <option
+                id="getInOffice"
+                data-addres="getInOffice"
+                data-delivery="получение в офисе"
+              >
+                получение в офисе в Варшаве - как лично, так и нет
+              </option>
+              <option
+                id="shippmentInPoland"
+                data-addres="shippmentInPoland"
+                data-delivery="пересылка по Польше (без личного получения)"
+              >
+                пересылка по Польше (без личного получения)
+              </option>
+              <option
+                id="shipmentInternational"
+                data-addres="shipmentInternational"
+                data-delivery="пересылка международная (кроме РФ)"
+              >
+                пересылка международная (кроме РФ)
+              </option>
+              <option
+                id="shipmenttoTheRF"
+                data-addres="shipmenttoTheRF"
+                data-delivery=" пересылка в РФ"
+              >
+                пересылка в РФ
+              </option>
+            </select>
+          </li>
+
+          <li class="calculator__item visually-hidden is-hidden">
+            <label class="checkbox__style">
+              <input
+                id="getCardInOfficeCheckbox"
+                type="checkbox"
+                name="getCardInOffice"
+              />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body calculator__subtitle">
+                <!-- Вам нужна услуга "Получение карты в офисе"? -->
+              </div>
+            </label>
+          </li>
+
+          <li class="calculator__item visually-hidden is-hidden" id="hasBlik">
+            <label class="checkbox__style">
+              <input id="hasBlikCheckbox" type="checkbox" name="hasBlik" />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body">
+                У Вас есть доступ к польской платежной системе BLIK?
+              </div>
+            </label>
+          </li>
+
+          <li
+            class="calculator__item visually-hidden is-hidden"
+            id="blickQuestion"
+          >
+            <label class="checkbox__style">
+              <input
+                id="blickQuestionCheckbox"
+                type="checkbox"
+                name="blickQuestion"
+              />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body">
+                У вас есть возможность оплачивать с помощью польской платежной
+                системы BLIK?
+              </div>
+            </label>
+          </li>
+
+          <li class="calculator__item clearance" id="expeditedClearance">
+            <label class="checkbox__style checkbox__radio">
+              <input
+                id="expeditedClearanceCheckbox"
+                type="radio"
+                name="clearance"
+                required
+              />
+              <div class="checkbox__checkmark radio"></div>
+              <div class="checkbox__body">
+                Ускоренное оформление
+                <p>(12 дней)</p>
+              </div>
+            </label>
+
+            <label class="checkbox__style" id="standartClearance">
+              <input
+                id="standartClearanceCheckbox"
+                type="radio"
+                name="clearance"
+                required
+                checked
+              />
+              <div class="checkbox__checkmark radio"></div>
+              <div class="checkbox__body">
+                Стандартное оформление
+                <p>(25 дней)</p>
+              </div>
+            </label>
+          </li>
+
+          <li class="calculator__item extra__opportunity">
+            <div class="checkbox__body extra__title calculator__subtitle">
+              Одновременно с картой мне требуется
+              <a
+                href="https://www.kod95.org/%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8-%D0%B8-%D1%86%D0%B5%D0%BD%D1%8B/%D0%BA%D0%BE%D0%B4-95"
+                class="calculator__link"
+                >код 95</a
+              >:
+            </div>
+            <div class="extra__wrapper">
+              <label class="checkbox__style chooseCode">
+                <input
+                  id="shortCode95"
+                  type="radio"
+                  name="getCode"
+                  class="extra__code95"
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Короткий Код 95</div>
+              </label>
+              <label class="checkbox__style chooseCode">
+                <input
+                  id="longCode95"
+                  type="radio"
+                  name="getCode"
+                  class="extra__code95"
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Длинный Код 95</div>
+              </label>
+              <label class="checkbox__style chooseCode">
+                <input
+                  id="noCode95"
+                  type="radio"
+                  name="getCode"
+                  class="extra__code95"
+                  checked
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Код 95 НЕ нужен</div>
+              </label>
+            </div>
+          </li>
+        </ul>
+
+        <div class="calulator__footer">
+          <div class="calulator__sums">
+            <label
+              id="Prepayment"
+              for="PrepaymentValue"
+              name="Prepayment"
+              class="calulator__price-label"
+              >Предоплата:
+            </label>
+            <input
+              class="calculatorForm__price"
+              id="prepaymentValue"
+              type="text"
+              readonly
+            />
+
+            <label
+              id="Surcharge"
+              for="SurchargeValue"
+              name="Surcharge"
+              class="calulator__price-label"
+              >Доплата в момент получения:
+            </label>
+            <input
+              class="calculatorForm__price"
+              id="surchargeValue"
+              type="text"
+              readonly
+            />
+
+            <label
+              id="totalPrice"
+              for="totalPriceValue"
+              name="totalPrice"
+              class="calulator__price-label"
+              >Итоговая стоимость:
+            </label>
+            <input
+              class="calculatorForm__price"
+              id="totalPriceValue"
+              type="text"
+              readonly
+            />
+          </div>
+
+          <div class="footer__payment" id="payInOffice">
+            <p class="calculator__text">Способ оплаты - наличными в офисе</p>
+          </div>
+
+          <div
+            class="footer__payment visually-hidden is-hidden"
+            id="paymentBlock"
+          >
+            <div class="checkbox__body calculator__subtitle">
+              Мне удобно оплачивать:
+            </div>
+
+            <div class="calculator__visit footer_variable">
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="banksCard"
+                  type="radio"
+                  name="paymentMethod"
+                  value="Банковской картой через интернет"
+                  checked
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">
+                  Банковской картой через интернет
+                </div>
+              </label>
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="anotherWay"
+                  type="radio"
+                  name="paymentMethod"
+                  value="Получить номер счёта для оплаты"
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">
+                  Получить номер счёта для оплаты
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <button type="button" class="calulator__btn" id="openUserformBtn">
+            Перейти к оформлению заказа
+          </button>
+
+          <!-- КОНТАКТЫ -->
+          <div
+            class="calculator__contacts contacts visually-hidden is-hidden"
+            id="contacts"
+          >
+            <div class="contacts__wrapper">
+              <label for="name" class="contacts__label" title="name">
+                Имя, фамилия латинскими (как в правах):
+              </label>
+              <input
+                class="contacts__input"
+                type="text"
+                id="name"
+                minlength="2"
+                name="userName"
+                placeholder=" "
+                required
+              />
+              <label for="email" class="contacts__label" title="email">
+                E-mail:
+              </label>
+              <input
+                class="contacts__input"
+                type="text"
+                id="email"
+                minlength="5"
+                name="email"
+                placeholder=" "
+                required
+              />
+              <label for="phone" class="contacts__label" title="telNumber">
+                Телефон (с кодом страны):
+              </label>
+              <input
+                class="contacts__input"
+                type="number"
+                id="telNumber"
+                minlength="8"
+                maxlength="17"
+                name="phone"
+                placeholder=" "
+                required
+              />
+              <p class="contacts__text">Мой телефон есть в:</p>
+              <ul class="contacts__list">
+                <li class="contacts__item">
+                  <label for="Viber" class="contacts__checkbox checkbox__style">
+                    <input
+                      class="contacts__input"
+                      type="checkbox"
+                      id="Viber"
+                      value="Viber"
+                    />
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">Viber</div>
+                  </label>
+                </li>
+                <li class="contacts__item">
+                  <label
+                    for="Telegram"
+                    class="contacts__checkbox checkbox__style"
+                  >
+                    <input
+                      class="contacts__input"
+                      type="checkbox"
+                      id="Telegram"
+                      value="Telegram"
+                    />
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">Telegram</div>
+                  </label>
+                </li>
+                <li class="contacts__item">
+                  <label
+                    for="WhatsApp"
+                    class="contacts__checkbox checkbox__style"
+                  >
+                    <input
+                      class="contacts__input"
+                      type="checkbox"
+                      id="WhatsApp"
+                      value="WhatsApp"
+                    />
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">WhatsApp</div>
+                  </label>
+                </li>
+              </ul>
+              <label for="phone" class="contacts__label" title="polTelNumber">
+                Польский номер телефона - для СМС о готовности чип (если есть)
+              </label>
+              <input
+                class="contacts__input"
+                type="number"
+                id="polTelNumber"
+                minlength="8"
+                maxlength="17"
+                name="phone"
+                placeholder=" "
+              />
+              <label
+                for="pesel"
+                id="peselNumber"
+                class="contacts__label"
+                title="pesel"
+              >
+                Номер Pesel:
+              </label>
+              <input
+                class="contacts__input"
+                type="number"
+                id="pesel"
+                minlength="11"
+                maxlength="11"
+                name="pesel"
+                placeholder=" "
+                title="Введите цифры от 0 до 9"
+              />
+
+              <div class="contacts__chip">
+                <label for="hasChipEarly" class="calculator__subtitle select"
+                  >Ранее уже имели чип-карту?
+                </label>
+                <select
+                  class="calculator__delivery"
+                  id="hasEarlyChip"
+                  name="hasChipEarly"
+                >
+                  <option id="firstChip" data-hasChipearly="firstChip" selected>
+                    Нет, это первая в жизни
+                  </option>
+                  <option id="firstChip" data-hasChipearly="firstChip" selected>
+                    Да, у ранее выданной истек срок действия
+                  </option>
+                  <option
+                    id="notPolishChipEnding"
+                    data-hasChipearly="notPolishChipEnding"
+                  >
+                    Да, НЕпольская и она ещё действует менее 60 дней
+                  </option>
+                  <option id="notPolishChip" data-hasChipearly="notPolishChip">
+                    Да, НЕпольская, действует свыше 60 дней, я готов её СДАТЬ!
+                  </option>
+                  <option
+                    id="polishChipEnding"
+                    data-hasChipearly="polishChipEnding"
+                  >
+                    Да, польская и она ещё действует менее 60 дней
+                  </option>
+                  <option id="lostChip" data-hasChipearly="lostChip">
+                    Моя карта утеряна
+                  </option>
+                </select>
+              </div>
+
+              <div class="contacts__pay">
+                <label for="whoPay" class="calculator__subtitle select"
+                  >Кто оплачивает изготовление чип-карты:
+                </label>
+                <select class="calculator__delivery" id="whoPay" name="whoPay">
+                  <option id="byMyselfZl" data-pay="byMyself" selected>
+                    Oплачиваю самостоятельно в злотых
+                  </option>
+                  <option id="byMyselfEuro" data-pay="byMyselfEuro">
+                    Oплачиваю самостоятельно в евро
+                  </option>
+                  <option id="byCompanyZl" data-pay="byCompanyZl">
+                    Oплачивает фирма в злотых
+                  </option>
+                  <option id="byCompanyEuro" data-pay="byCompanyEuro">
+                    Oплачивает фирма в евро
+                  </option>
+                  <option id="byBankCard" data-pay="byBankCard">
+                    Oплата банковской картой через интернет-соединение
+                  </option>
+                </select>
+              </div>
+
+              <label
+                for="address"
+                class="contacts__label contacts__address"
+                title="name"
+              >
+                Польский адрес с почтовым кодом (если имеется)
+              </label>
+
+              <textarea
+                class="contacts__input contacts__input--resize"
+                rows="5"
+                id="address"
+                name="address"
+                placeholder=" "
+                autocomplete="off"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="calulator__btn-sabmit">
+              Заказать
+            </button>
+          </div>
+          <!-- КОНТАКТЫ конец-->
+
+          <a
+            href="https://www.kod95.org/%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8-%D0%B8-%D1%86%D0%B5%D0%BD%D1%8B/%D1%87%D0%B8%D0%BF-%D0%BA%D0%B0%D1%80%D1%82%D0%B0-%D1%82%D0%B0%D1%85%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B0"
+            class="calulator__btn"
+            >Выйти без оформления заказа</a
+          >
+        </div>
+      </form>
+    </section>
+
+    <!-- modal -->
+
+    <div
+      class="backdrop visually-hidden is-hidden"
+      id="modalFail"
+      data-modal
+      data-modal--good
+    >
+      <div class="modal">
+        <form action="" class="modal__form">
+          <div class="modal__circuse">
+            <svg class="modal__icon modal__icon-like">
+              <path
+                d="M29.164 10.472c-1.25-0.328-4.189-0.324-8.488-0.438 0.203-0.938 0.25-1.784 0.25-3.286 0-3.588-2.614-6.748-4.926-6.748-1.633 0-2.979 1.335-3 2.977-0.022 2.014-0.645 5.492-4 7.256-0.246 0.13-0.95 0.477-1.053 0.522l0.053 0.045c-0.525-0.453-1.253-0.8-2-0.8h-3c-1.654 0-3 1.346-3 3v16c0 1.654 1.346 3 3 3h3c1.19 0 2.186-0.719 2.668-1.727 0.012 0.004 0.033 0.010 0.047 0.012 0.066 0.018 0.144 0.037 0.239 0.062 0.018 0.005 0.027 0.007 0.046 0.012 0.576 0.143 1.685 0.408 4.055 0.953 0.508 0.116 3.192 0.688 5.972 0.688h5.467c1.666 0 2.867-0.641 3.582-1.928 0.010-0.020 0.24-0.469 0.428-1.076 0.141-0.457 0.193-1.104 0.023-1.76 1.074-0.738 1.42-1.854 1.645-2.58 0.377-1.191 0.264-2.086 0.002-2.727 0.604-0.57 1.119-1.439 1.336-2.766 0.135-0.822-0.010-1.668-0.389-2.372 0.566-0.636 0.824-1.436 0.854-2.176l0.012-0.209c0.007-0.131 0.013-0.212 0.013-0.5 0-1.263-0.875-2.874-2.836-3.434zM7 29c0 0.553-0.447 1-1 1h-3c-0.553 0-1-0.447-1-1v-16c0-0.553 0.447-1 1-1h3c0.553 0 1 0.447 1 1v16zM29.977 14.535c-0.020 0.494-0.227 1.465-1.977 1.465-1.5 0-2 0-2 0-0.277 0-0.5 0.224-0.5 0.5s0.223 0.5 0.5 0.5c0 0 0.438 0 1.938 0s1.697 1.244 1.6 1.844c-0.124 0.746-0.474 2.156-2.163 2.156-1.687 0-2.375 0-2.375 0-0.277 0-0.5 0.223-0.5 0.5 0 0.275 0.223 0.5 0.5 0.5 0 0 1.188 0 1.969 0 1.688 0 1.539 1.287 1.297 2.055-0.319 1.009-0.514 1.945-2.641 1.945-0.719 0-1.631 0-1.631 0-0.277 0-0.5 0.223-0.5 0.5 0 0.275 0.223 0.5 0.5 0.5 0 0 0.693 0 1.568 0 1.094 0 1.145 1.035 1.031 1.406-0.125 0.406-0.273 0.707-0.279 0.721-0.302 0.545-0.789 0.873-1.82 0.873h-5.467c-2.746 0-5.47-0.623-5.54-0.639-4.154-0.957-4.373-1.031-4.634-1.105 0 0-0.846-0.143-0.846-0.881l-0.007-13.812c0-0.469 0.299-0.893 0.794-1.042 0.062-0.024 0.146-0.050 0.206-0.075 4.568-1.892 5.959-6.040 6-9.446 0.006-0.479 0.375-1 1-1 1.057 0 2.926 2.122 2.926 4.748 0 2.371-0.096 2.781-0.926 5.252 10 0 9.93 0.144 10.812 0.375 1.094 0.313 1.188 1.219 1.188 1.531 0 0.343-0.010 0.293-0.023 0.629zM4.5 26c-0.828 0-1.5 0.672-1.5 1.5s0.672 1.5 1.5 1.5 1.5-0.672 1.5-1.5-0.672-1.5-1.5-1.5zM4.5 28c-0.275 0-0.5-0.225-0.5-0.5s0.225-0.5 0.5-0.5 0.5 0.225 0.5 0.5-0.225 0.5-0.5 0.5z"
+              ></path>
+            </svg>
+          </div>
+
+          <p class="modal__text">Спасибо, заявка отправлена.</p>
+          <p class="modal__text">
+            В ближайшее время наш менеджер свяжется с Вами.
+          </p>
+        </form>
+
+        <a
+          href="https://www.kod95.org/%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8-%D0%B8-%D1%86%D0%B5%D0%BD%D1%8B/%D1%87%D0%B8%D0%BF-%D0%BA%D0%B0%D1%80%D1%82%D0%B0-%D1%82%D0%B0%D1%85%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B0"
+          class="modal__submit"
+          >OK</a
+        >
+      </div>
+    </div>
+
+    <!-- modal end -->
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+const BASE_COST = "487"; // базовая цена карты
+const a = "0"; // "ОФИС-25"
+const b = "80"; //  "ОФИС-12"
+const c = "130"; // "БЛИК"
+const d = "190"; // "РАССРОЧКА"
+const e = "190"; // "УДАЛЁННАЯ"
+const surchargeSumForProcedureD = "200 zl"; //доплата по процедуре Рассрочка (Д)
+
+const discountsList = {
+  shortCode95: "75", // скидка при одновременнос оформлении карты и короткого кода 95
+  longCode95: "90", // скидка при одновременнос оформлении карты и длинного кода 95
+  noCode95: "0", // если нужна только карта
+};
+
+const deliveryPrices = {
+  ownAddres: "0", // свой адрес (с личным получением заказного письма)
+  getInOffice: "50", // получение в офисе
+  shippmentInPoland: "100", // пересылка по Польше
+  shipmentInternational: "150", // международная пересылка, кроме РФ
+  shipmenttoTheRF: "200", // пересылка в РФ
+};
+
+const refs = {
+  calculatorForm: document.querySelector("#calculator__form"),
+  totalPriceValue: document.querySelector("#totalPriceValue"),
+  expeditedClearanceCheckbox: document.getElementById(
+    "expeditedClearanceCheckbox"
+  ),
+  standartClearanceCheckbox: document.querySelector(
+    "#standartClearanceCheckbox"
+  ),
+  getCardInOfficeCheckbox: document.getElementById("getCardInOfficeCheckbox"),
+  hasBlikCheckbox: document.getElementById("hasBlikCheckbox"),
+  deliveryMethod: document.querySelector("#deliveryMethod"),
+  blickQuestion: document.querySelector("#blickQuestion"),
+  blickQuestionCheckbox: document.querySelector("#blickQuestionCheckbox"),
+  hasBlik: document.querySelector("#hasBlik"),
+  expeditedClearance: document.querySelector("#expeditedClearance"),
+  expeditedClearanceCheckbox: document.querySelector(
+    "#expeditedClearanceCheckbox"
+  ),
+  standartClearance: document.querySelector("#standartClearance"),
+  selectedDeliveryMethod: document.querySelector("option[selected]"),
+  extraOpportunity: document.querySelector(".extra__opportunity"),
+
+  surchargeSum: document.querySelector("#surchargeValue"),
+  prepaymentSum: document.querySelector("#prepaymentValue"),
+
+  formName: document.querySelector("#name"),
+  formEmail: document.querySelector("#email"),
+  formTel: document.querySelector("#telNumber"),
+  formPolTel: document.querySelector("#polTelNumber"),
+  formPesel: document.querySelector("#pesel"),
+  formAddress: document.querySelector("#address"),
+
+  btnSabmit: document.querySelector(".calulator__btn-sabmit"),
+  payInOffice: document.querySelector("#payInOffice"),
+  paymentBlock: document.querySelector("#paymentBlock"),
+  paymentMethod: document.querySelectorAll("[name='paymentMethod']"),
+  contacts: document.querySelector("#contacts"),
+  openUserformBtn: document.querySelector("#openUserformBtn"),
+  backdrop: document.querySelector(".backdrop"),
+  modalBtn: document.querySelector(".modal__submit"),
+
+  deliveryMethodsList: {
+    ownAddresOption: document.querySelector("[data-addres='ownAddres']"),
+    getInOfficeOption: document.querySelector("[data-addres='getInOffice']"),
+    shippmentInPolandOption: document.querySelector(
+      "[data-addres='shippmentInPoland']"
+    ),
+    shipmentInternationalOption: document.querySelector(
+      "[data-addres='shipmentInternational']"
+    ),
+    shipmenttoTheRFOption: document.querySelector(
+      "[data-addres='shipmenttoTheRF']"
+    ),
+  },
+};
+
+const EMAIL_REGEXP =
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
+{
+  document.getElementById("ownAddres").value = deliveryPrices.ownAddres;
+  document.getElementById("getInOffice").value = deliveryPrices.getInOffice;
+  document.getElementById("shippmentInPoland").value =
+    deliveryPrices.shippmentInPoland;
+  document.getElementById("shipmentInternational").value =
+    deliveryPrices.shipmentInternational;
+  document.getElementById("shipmenttoTheRF").value =
+    deliveryPrices.shipmenttoTheRF;
+  document.querySelector("#shortCode95").value = discountsList.shortCode95;
+  document.querySelector("#longCode95").value = discountsList.longCode95;
+  document.querySelector("#noCode95").value = discountsList.noCode95;
+  refs.prepaymentSum.value = `${parseInt(BASE_COST)} zl`;
+  refs.surchargeSum.value = `0 zl`;
+  refs.totalPriceValue.value = `${parseInt(BASE_COST)} zl`;
+
+  refs.calculatorForm.addEventListener("change", onChangeInputValue);
+  refs.calculatorForm.addEventListener("submit", onCalculatorFormSubmit);
+  refs.formEmail.addEventListener("input", onInput);
+  refs.formTel.addEventListener("input", onInputTel);
+  refs.formPolTel.addEventListener("input", onInputTel);
+  refs.formPesel.addEventListener("input", onInputPesel);
+  refs.openUserformBtn.addEventListener("click", onOpenUserformBtnClick);
+  refs.modalBtn.addEventListener(
+    "click",
+    addClass,
+    refs.backdrop,
+    "visually-hidden",
+    "is-hidden"
+  );
+}
+
+function onCalculatorFormSubmit(event) {
+  event.preventDefault();
+
+  const userName = refs.formName.value.trim();
+  const email = refs.formEmail.value.trim();
+  const phone = refs.formTel.value.trim();
+  const myPhoneIsIn = [...document.querySelectorAll(".contacts__input")]
+    .filter(el => el.checked)
+    .map(el => el.value);
+  const deadlineForPaperwork = `${
+    refs.standartClearanceCheckbox.checked
+      ? "обычное, 25 дней"
+      : "ускоренное, 12 дней"
+  }`;
+  const code95 = [...document.querySelectorAll(".extra__code95")]
+    .filter(el => el.checked)
+    .map(el => {
+      return {
+        value: el.value,
+        id: el.id,
+      };
+    });
+  code95.forEach(el => {
+    return ({ id: idCode95, value: valueCode95 } = el);
+  });
+  const prepayment = `${refs.prepaymentSum.value}`;
+  const surcharge = `${refs.surchargeSum.value}`; //доплата
+  const totalSum = `${refs.totalPriceValue.value}`;
+  const payMethod = [...refs.paymentMethod].find(el => el.checked);
+  const paymentMethod = `${
+    refs.payInOffice.classList.contains("visually-hidden")
+      ? `Способ оплаты: ${payMethod.value}`
+      : `Способ оплаты: наличными в офиссе `
+  }`;
+  const personalSubmissionOfDocs = `${
+    document.querySelector("#comeToOffice").checked
+      ? `Вы готовы лично приехать в Варшаву для подачи документов? - ДА <br />`
+      : " "
+  }`;
+  const delivery = [...document.querySelectorAll("[data-delivery]")].find(
+    el => el.selected
+  ).dataset.delivery;
+  const hasEarlyChip = [
+    ...document.querySelectorAll("[data-hasChipearly]"),
+  ].find(el => el.selected).value;
+  const whoPay = [...document.querySelectorAll("[data-pay]")].find(
+    el => el.selected
+  ).value;
+  const hasBlickSystemChecked = refs.blickQuestionCheckbox.checked
+    ? "Да"
+    : "Нет";
+  const hasBlickSystem = `Есть доступ к системе оплаты Blick: ${
+    (refs.hasBlikCheckbox.checked && "Да") || hasBlickSystemChecked
+  } <hr />`;
+  const isBlick = `${
+    !document.querySelector("#comeToOffice").checked ? hasBlickSystem : " "
+  }`;
+  const peselNumber = refs.formPesel.value.trim()
+    ? refs.formPesel.value.trim()
+    : "00000000000";
+  const polPhoneNumber = refs.formPolTel.value.trim()
+    ? refs.formPolTel.value.trim()
+    : "00000000";
+  const address = refs.formAddress.value.trim()
+    ? `Адресс: &#x20; ${refs.formAddress.value.trim()} <hr/>`
+    : " ";
+
+  try {
+    Email.send({
+   SecureToken: "ec88ce96-761e-461f-9b06-00ca22ca8bfb",
+   To: "infobynet@gmail.com",
+   From: "infobynet@gmail.com",
+
+      Subject: "ЗАЯВКА С ФОРМЫ",
+      Body: `Calculator95 <hr/>
+            Имя:  &#x20; ${userName}, <br/>
+            Почта: &#x20; ${email}, <br/>
+            Телефон: &#x20; ${phone}, <br/>
+            Мой телефон есть в: &#x20; ${myPhoneIsIn}, <br/>
+            Номер Pesel:  &#x20; ${peselNumber}, <br/>
+            Польский номер телефона: &#x20; ${polPhoneNumber}, <br/>
+            Оформление: &#x20; ${deadlineForPaperwork}, <hr/>
+            ${paymentMethod} <hr/>
+            ${personalSubmissionOfDocs}
+            ${isBlick}
+            Был ли чип раньше: &#x20; ${hasEarlyChip} <hr/>            
+            Способ доставки:  &#x20; ${delivery} <br />           
+            ${address} 
+            Одновременно с картой мне нужно оформить: &#x20;  ${idCode95} &#x20; = &#x20; ${valueCode95}, <hr/>           
+            Предоплата: &#x20; ${prepayment} <br/>
+            Доплата в момент получения: &#x20;  ${surcharge} <br/>
+            Итоговая стоимость: &#x20; ${totalSum} <hr/>             
+            Кто оплачивает: &#x20; ${whoPay} <hr/>
+    `,
+    }).then(data => removeClass(refs.backdrop, "visually-hidden", "is-hidden"));
+  } catch (error) {
+    alert("Не удалось отправить заявку");
+  }
+
+  event.currentTarget.reset();
+}
+
+function onChangeInputValue() {
+  let procedure = null;
+  const visitInOffice = document.querySelector("#comeToOffice").checked;
+
+  if (visitInOffice && !refs.expeditedClearanceCheckbox.checked) {
+    procedure = a;
+    refs.standartClearanceCheckbox.checked = "true";
+  }
+
+  if (refs.deliveryMethodsList.getInOfficeOption.selected) {
+    refs.getCardInOfficeCheckbox.checked = true;
+    refs.surchargeSum.value = `${parseInt(deliveryPrices.getInOffice)} zl`;
+    if (visitInOffice) {
+      refs.surchargeSum.value = " 0 zl";
+    }
+  } else {
+    refs.getCardInOfficeCheckbox.checked = false;
+    refs.surchargeSum.value = `0 zl`;
+  }
+
+  if (visitInOffice) {
+    addClass(refs.hasBlik, "visually-hidden", "is-hidden");
+    removeClass(refs.standartClearance, "visually-hidden", "is-hidden");
+    addClass(refs.blickQuestion, "visually-hidden", "is-hidden");
+    removeClass(refs.payInOffice, "visually-hidden", "is-hidden");
+    addClass(refs.paymentBlock, "visually-hidden", "is-hidden");
+  }
+
+  if (!visitInOffice) {
+    refs.expeditedClearanceCheckbox.checked = true;
+    addClass(refs.standartClearance, "visually-hidden", "is-hidden");
+    addClass(refs.payInOffice, "visually-hidden", "is-hidden");
+    removeClass(refs.paymentBlock, "visually-hidden", "is-hidden");
+
+    if (refs.deliveryMethodsList.getInOfficeOption.selected) {
+      removeClass(refs.hasBlik, "visually-hidden", "is-hidden");
+      addClass(refs.blickQuestion, "visually-hidden", "is-hidden");
+      refs.blickQuestionCheckbox.checked = false;
+    } else {
+      addClass(refs.hasBlik, "visually-hidden", "is-hidden");
+      refs.hasBlikCheckbox.checked = false;
+      removeClass(refs.blickQuestion, "visually-hidden", "is-hidden");
+    }
+
+    refs.deliveryMethodsList.getInOfficeOption.removeAttribute("selected");
+    refs.deliveryMethodsList.ownAddresOption.setAttribute("selected", true);
+  }
+
+  if (visitInOffice && refs.expeditedClearanceCheckbox.checked) {
+    procedure = b;
+  }
+
+  if (
+    !visitInOffice &&
+    refs.expeditedClearanceCheckbox.checked &&
+    refs.getCardInOfficeCheckbox.checked &&
+    refs.hasBlikCheckbox.checked
+  ) {
+    procedure = c;
+  }
+
+  if (
+    !visitInOffice &&
+    refs.expeditedClearanceCheckbox.checked &&
+    !refs.getCardInOfficeCheckbox.checked &&
+    refs.blickQuestionCheckbox.checked
+  ) {
+    procedure = c;
+  }
+
+  if (
+    !visitInOffice &&
+    refs.expeditedClearanceCheckbox.checked &&
+    refs.getCardInOfficeCheckbox.checked &&
+    !refs.hasBlikCheckbox.checked &&
+    !refs.blickQuestionCheckbox.checked
+  ) {
+    procedure = d;
+    refs.surchargeSum.value = surchargeSumForProcedureD;
+  }
+
+  if (
+    !visitInOffice &&
+    refs.expeditedClearanceCheckbox.checked &&
+    !refs.getCardInOfficeCheckbox.checked &&
+    !refs.blickQuestionCheckbox.checked
+  ) {
+    procedure = e;
+  }
+
+  const extraSum = procedure ? procedure : a;
+  const deliverySum = refs.deliveryMethod.value;
+
+  const discount = getDiscount([
+    ...document.querySelectorAll(".chooseCode input"),
+  ]);
+
+  if (discount.value) {
+    refs.totalPriceValue.value = `${
+      parseInt(BASE_COST) +
+      parseInt(extraSum) +
+      parseInt(deliverySum) -
+      parseInt(discount.value)
+    } zl`;
+
+    if (
+      refs.deliveryMethodsList.getInOfficeOption.selected &&
+      visitInOffice &&
+      refs.standartClearanceCheckbox.checked
+    ) {
+      refs.totalPriceValue.value = `${
+        parseInt(BASE_COST) +
+        parseInt(deliveryPrices.getInOffice) -
+        parseInt(discount.value)
+      } zl`;
+    }
+  } else {
+    refs.totalPriceValue.value = `${
+      parseInt(BASE_COST) + parseInt(extraSum) + parseInt(deliverySum)
+    } zl`;
+    if (refs.deliveryMethodsList.getInOfficeOption.selected && visitInOffice) {
+      refs.totalPriceValue.value = `${parseInt(BASE_COST)} zl`;
+    }
+  }
+
+  refs.prepaymentSum.value = `${
+    parseInt(refs.totalPriceValue.value) - parseInt(refs.surchargeSum.value)
+  } zl`;
+
+  if (
+    isEmailValid(refs.formEmail.value) &&
+    String(refs.formTel.value).length > 7 &&
+    String(refs.formTel.value).length < 17
+  ) {
+    refs.btnSabmit.removeAttribute("disabled");
+  } else {
+    refs.btnSabmit.setAttribute("disabled", "disabled");
+  }
+}
+
+function getDiscount(arr) {
+  return arr.find(element => element.checked);
+}
+
+function addClass(element, ...className) {
+  return element.classList.add(...className);
+}
+
+function removeClass(element, ...className) {
+  return element.classList.remove(...className);
+}
+
+function onInput() {
+  const email = refs.formEmail.value.trim();
+
+  if (isEmailValid(email)) {
+    refs.formEmail.style.borderColor = "#2E8B57cc";
+  } else {
+    refs.formEmail.style.borderColor = "#CD5C5Ccc";
+  }
+}
+
+function onInputTel(e) {
+  if (String(e.target.value).length > 7 && String(e.target.value).length < 17) {
+    e.target.style.borderColor = "#2E8B57cc";
+  } else {
+    e.target.style.borderColor = "#CD5C5Ccc";
+  }
+}
+
+function onInputPesel(e) {
+  if (
+    String(e.target.value).length === 11 ||
+    String(e.target.value).length === 0
+  ) {
+    e.target.style.borderColor = "#2E8B57cc";
+  } else {
+    e.target.style.borderColor = "#CD5C5Ccc";
+  }
+}
+
+function isEmailValid(value) {
+  return EMAIL_REGEXP.test(value);
+}
+
+function onOpenUserformBtnClick(e) {
+  removeClass(refs.contacts, "visually-hidden", "is-hidden");
+  addClass(refs.openUserformBtn, "visually-hidden", "is-hidden");
+}
+
+function onHasEarlyChipClick(e) {
+  console.log(e.target.value);
+}
+
+</script>
+  </body>
+</html>

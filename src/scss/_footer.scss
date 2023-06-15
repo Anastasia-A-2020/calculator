@@ -1,22 +1,27 @@
-.form__footer {
-  display: grid;
-  justify-items: center;
-  gap: 10px;
+// .form__footer {
+//   display: grid;
+//   justify-items: center;
+//   gap: 10px;
 
-  @media screen and (max-width: 479px) {
-    padding: 10px;
-    justify-items: center;
-    gap: 10px;
-  }
+//   @media screen and (max-width: 479px) {
+//     padding: 10px;
+//     justify-items: center;
+//     gap: 10px;
+//   }
+// }
+
+.footer__payment {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
-.calulator__sums {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  align-items: center;
+.footer_variable {
+  display: flex;
+
+  justify-content: space-between;
 }
 
+.calulator__btn,
 .calulator__btn-sabmit {
   display: block;
   margin-top: 15px;
@@ -24,8 +29,13 @@
   margin-left: auto;
   max-width: 300px;
   min-width: 150px;
+  border: 2px solid #ffffff80;
   border-radius: 4px;
+  // border: none;
   padding: 3%;
+  line-height: 1.7;
+  font-size: 12px;
+  text-decoration: none;
   text-transform: uppercase;
   color: $main-text-color-dark;
   background-color: $main-text-color-light;
@@ -44,6 +54,14 @@
     background-color: $dark-bg-color;
     color: $main-text-color-dark;
   }
+}
+
+.calulator__btn {
+  padding: 1%;
+  align-items: center;
+  text-align: center;
+  width: 250px;
+  // background-color: #ffffff80;
 }
 
 .calculatorForm__price {

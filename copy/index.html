@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./dist/css/style.min.css" />
+  </head>
+  <body>
+    <section class="calculator">
+      <!-- <style></style> -->
+      <form id="calculator__form" class="calculator__form" name="calcForm">
+        <div class="calculator__image"></div>
+        <ul class="calculator__list">
+          <li class="calculator__item">
+            <div class="checkbox__body calculator__subtitle">
+              Подача документов?
+            </div>
+            <div class="calculator__visit">
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="comeToOffice"
+                  type="radio"
+                  name="readyToComeInOffice"
+                  value="yes"
+                  checked
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Лично в Варшаве</div>
+              </label>
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="dontComeInOffice"
+                  type="radio"
+                  name="readyToComeInOffice"
+                  value="no"
+                  class="extra__code950"
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Дистанционно</div>
+              </label>
+            </div>
+          </li>
+
+          <li class="calculator__item">
+            <label for="deliveryMethod" class="calculator__subtitle select"
+              >Выберите способ получения карты:
+            </label>
+            <select
+              class="calculator__delivery"
+              id="deliveryMethod"
+              name="deliveryMethod"
+            >
+              <option
+                id="ownAddres"
+                data-addres="ownAddres"
+                data-delivery="свой адрес"
+                selected
+              >
+                ваш адрес в Польше - личное получение заказного письма!
+              </option>
+              <option
+                id="getInOffice"
+                data-addres="getInOffice"
+                data-delivery="получение в офисе"
+              >
+                получение в офисе в Варшаве - как лично, так и нет
+              </option>
+              <option
+                id="shippmentInPoland"
+                data-addres="shippmentInPoland"
+                data-delivery="пересылка по Польше (без личного получения)"
+              >
+                пересылка по Польше (без личного получения)
+              </option>
+              <option
+                id="shipmentInternational"
+                data-addres="shipmentInternational"
+                data-delivery="пересылка международная (кроме РФ)"
+              >
+                пересылка международная (кроме РФ)
+              </option>
+              <option
+                id="shipmenttoTheRF"
+                data-addres="shipmenttoTheRF"
+                data-delivery=" пересылка в РФ"
+              >
+                пересылка в РФ
+              </option>
+            </select>
+          </li>
+
+          <li class="calculator__item visually-hidden is-hidden">
+            <label class="checkbox__style">
+              <input
+                id="getCardInOfficeCheckbox"
+                type="checkbox"
+                name="getCardInOffice"
+              />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body calculator__subtitle">
+                <!-- Вам нужна услуга "Получение карты в офисе"? -->
+              </div>
+            </label>
+          </li>
+
+          <li class="calculator__item visually-hidden is-hidden" id="hasBlik">
+            <label class="checkbox__style">
+              <input id="hasBlikCheckbox" type="checkbox" name="hasBlik" />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body">
+                У Вас есть доступ к польской платежной системе BLIK?
+              </div>
+            </label>
+          </li>
+
+          <li
+            class="calculator__item visually-hidden is-hidden"
+            id="blickQuestion"
+          >
+            <label class="checkbox__style">
+              <input
+                id="blickQuestionCheckbox"
+                type="checkbox"
+                name="blickQuestion"
+              />
+              <div class="checkbox__checkmark"></div>
+              <div class="checkbox__body">
+                У вас есть возможность оплачивать с помощью польской платежной
+                системы BLIK?
+              </div>
+            </label>
+          </li>
+
+          <li class="calculator__item clearance" id="expeditedClearance">
+            <label class="checkbox__style checkbox__radio">
+              <input
+                id="expeditedClearanceCheckbox"
+                type="radio"
+                name="clearance"
+                required
+              />
+              <div class="checkbox__checkmark radio"></div>
+              <div class="checkbox__body">
+                Ускоренное оформление
+                <p>(12 дней)</p>
+              </div>
+            </label>
+
+            <label class="checkbox__style" id="standartClearance">
+              <input
+                id="standartClearanceCheckbox"
+                type="radio"
+                name="clearance"
+                required
+                checked
+              />
+              <div class="checkbox__checkmark radio"></div>
+              <div class="checkbox__body">
+                Стандартное оформление
+                <p>(25 дней)</p>
+              </div>
+            </label>
+          </li>
+
+          <li class="calculator__item extra__opportunity">
+            <div class="checkbox__body extra__title calculator__subtitle">
+              Одновременно с картой мне требуется
+              <a
+                href="https://www.kod95.org/%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8-%D0%B8-%D1%86%D0%B5%D0%BD%D1%8B/%D0%BA%D0%BE%D0%B4-95"
+                class="calculator__link"
+                >код 95</a
+              >:
+            </div>
+            <div class="extra__wrapper">
+              <label class="checkbox__style chooseCode">
+                <input
+                  id="shortCode95"
+                  type="radio"
+                  name="getCode"
+                  class="extra__code95"
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Короткий Код 95</div>
+              </label>
+              <label class="checkbox__style chooseCode">
+                <input
+                  id="longCode95"
+                  type="radio"
+                  name="getCode"
+                  class="extra__code95"
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Длинный Код 95</div>
+              </label>
+              <label class="checkbox__style chooseCode">
+                <input
+                  id="noCode95"
+                  type="radio"
+                  name="getCode"
+                  class="extra__code95"
+                  checked
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">Код 95 НЕ нужен</div>
+              </label>
+            </div>
+          </li>
+        </ul>
+
+        <div class="calulator__footer">
+          <div class="calulator__sums">
+            <label
+              id="Prepayment"
+              for="PrepaymentValue"
+              name="Prepayment"
+              class="calulator__price-label"
+              >Предоплата:
+            </label>
+            <input
+              class="calculatorForm__price"
+              id="prepaymentValue"
+              type="text"
+              readonly
+            />
+
+            <label
+              id="Surcharge"
+              for="SurchargeValue"
+              name="Surcharge"
+              class="calulator__price-label"
+              >Доплата в момент получения:
+            </label>
+            <input
+              class="calculatorForm__price"
+              id="surchargeValue"
+              type="text"
+              readonly
+            />
+
+            <label
+              id="totalPrice"
+              for="totalPriceValue"
+              name="totalPrice"
+              class="calulator__price-label"
+              >Итоговая стоимость:
+            </label>
+            <input
+              class="calculatorForm__price"
+              id="totalPriceValue"
+              type="text"
+              readonly
+            />
+          </div>
+
+          <div class="footer__payment" id="payInOffice">
+            <p class="calculator__text">Способ оплаты - наличными в офисе</p>
+          </div>
+
+          <div
+            class="footer__payment visually-hidden is-hidden"
+            id="paymentBlock"
+          >
+            <div class="checkbox__body calculator__subtitle">
+              Мне удобно оплачивать:
+            </div>
+
+            <div class="calculator__visit footer_variable">
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="banksCard"
+                  type="radio"
+                  name="paymentMethod"
+                  value="Банковской картой через интернет"
+                  checked
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">
+                  Банковской картой через интернет
+                </div>
+              </label>
+              <label class="checkbox__style checkbox__radio">
+                <input
+                  id="anotherWay"
+                  type="radio"
+                  name="paymentMethod"
+                  value="Получить номер счёта для оплаты"
+                />
+                <div class="checkbox__checkmark radio"></div>
+                <div class="checkbox__body">
+                  Получить номер счёта для оплаты
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <button type="button" class="calulator__btn" id="openUserformBtn">
+            Перейти к оформлению заказа
+          </button>
+
+          <!-- КОНТАКТЫ -->
+          <div
+            class="calculator__contacts contacts visually-hidden is-hidden"
+            id="contacts"
+          >
+            <div class="contacts__wrapper">
+              <label for="name" class="contacts__label" title="name">
+                Имя, фамилия латинскими (как в правах):
+              </label>
+              <input
+                class="contacts__input"
+                type="text"
+                id="name"
+                minlength="2"
+                name="userName"
+                placeholder=" "
+                required
+              />
+              <label for="email" class="contacts__label" title="email">
+                E-mail:
+              </label>
+              <input
+                class="contacts__input"
+                type="text"
+                id="email"
+                minlength="5"
+                name="email"
+                placeholder=" "
+                required
+              />
+              <label for="phone" class="contacts__label" title="telNumber">
+                Телефон (с кодом страны):
+              </label>
+              <input
+                class="contacts__input"
+                type="number"
+                id="telNumber"
+                minlength="8"
+                maxlength="17"
+                name="phone"
+                placeholder=" "
+                required
+              />
+              <p class="contacts__text">Мой телефон есть в:</p>
+              <ul class="contacts__list">
+                <li class="contacts__item">
+                  <label for="Viber" class="contacts__checkbox checkbox__style">
+                    <input
+                      class="contacts__input"
+                      type="checkbox"
+                      id="Viber"
+                      value="Viber"
+                    />
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">Viber</div>
+                  </label>
+                </li>
+                <li class="contacts__item">
+                  <label
+                    for="Telegram"
+                    class="contacts__checkbox checkbox__style"
+                  >
+                    <input
+                      class="contacts__input"
+                      type="checkbox"
+                      id="Telegram"
+                      value="Telegram"
+                    />
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">Telegram</div>
+                  </label>
+                </li>
+                <li class="contacts__item">
+                  <label
+                    for="WhatsApp"
+                    class="contacts__checkbox checkbox__style"
+                  >
+                    <input
+                      class="contacts__input"
+                      type="checkbox"
+                      id="WhatsApp"
+                      value="WhatsApp"
+                    />
+                    <div class="checkbox__checkmark"></div>
+                    <div class="checkbox__body">WhatsApp</div>
+                  </label>
+                </li>
+              </ul>
+              <label for="phone" class="contacts__label" title="polTelNumber">
+                Польский номер телефона - для СМС о готовности чип (если есть)
+              </label>
+              <input
+                class="contacts__input"
+                type="number"
+                id="polTelNumber"
+                minlength="8"
+                maxlength="17"
+                name="phone"
+                placeholder=" "
+              />
+              <label
+                for="pesel"
+                id="peselNumber"
+                class="contacts__label"
+                title="pesel"
+              >
+                Номер Pesel:
+              </label>
+              <input
+                class="contacts__input"
+                type="number"
+                id="pesel"
+                minlength="11"
+                maxlength="11"
+                name="pesel"
+                placeholder=" "
+                title="Введите цифры от 0 до 9"
+              />
+
+              <div class="contacts__chip">
+                <label for="hasChipEarly" class="calculator__subtitle select"
+                  >Ранее уже имели чип-карту?
+                </label>
+                <select
+                  class="calculator__delivery"
+                  id="hasEarlyChip"
+                  name="hasChipEarly"
+                >
+                  <option id="firstChip" data-hasChipearly="firstChip" selected>
+                    Нет, это первая в жизни
+                  </option>
+                  <option id="firstChip" data-hasChipearly="firstChip" selected>
+                    Да, у ранее выданной истек срок действия
+                  </option>
+                  <option
+                    id="notPolishChipEnding"
+                    data-hasChipearly="notPolishChipEnding"
+                  >
+                    Да, НЕпольская и она ещё действует менее 60 дней
+                  </option>
+                  <option id="notPolishChip" data-hasChipearly="notPolishChip">
+                    Да, НЕпольская, действует свыше 60 дней, я готов её СДАТЬ!
+                  </option>
+                  <option
+                    id="polishChipEnding"
+                    data-hasChipearly="polishChipEnding"
+                  >
+                    Да, польская и она ещё действует менее 60 дней
+                  </option>
+                  <option id="lostChip" data-hasChipearly="lostChip">
+                    Моя карта утеряна
+                  </option>
+                </select>
+              </div>
+
+              <div class="contacts__pay">
+                <label for="whoPay" class="calculator__subtitle select"
+                  >Кто оплачивает изготовление чип-карты:
+                </label>
+                <select class="calculator__delivery" id="whoPay" name="whoPay">
+                  <option id="byMyselfZl" data-pay="byMyself" selected>
+                    Oплачиваю самостоятельно в злотых
+                  </option>
+                  <option id="byMyselfEuro" data-pay="byMyselfEuro">
+                    Oплачиваю самостоятельно в евро
+                  </option>
+                  <option id="byCompanyZl" data-pay="byCompanyZl">
+                    Oплачивает фирма в злотых
+                  </option>
+                  <option id="byCompanyEuro" data-pay="byCompanyEuro">
+                    Oплачивает фирма в евро
+                  </option>
+                  <option id="byBankCard" data-pay="byBankCard">
+                    Oплата банковской картой через интернет-соединение
+                  </option>
+                </select>
+              </div>
+
+              <label
+                for="address"
+                class="contacts__label contacts__address"
+                title="name"
+              >
+                Польский адрес с почтовым кодом (если имеется)
+              </label>
+
+              <textarea
+                class="contacts__input contacts__input--resize"
+                rows="5"
+                id="address"
+                name="address"
+                placeholder=" "
+                autocomplete="off"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="calulator__btn-sabmit">
+              Заказать
+            </button>
+          </div>
+          <!-- КОНТАКТЫ конец-->
+
+          <a
+            href="https://www.kod95.org/%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8-%D0%B8-%D1%86%D0%B5%D0%BD%D1%8B/%D1%87%D0%B8%D0%BF-%D0%BA%D0%B0%D1%80%D1%82%D0%B0-%D1%82%D0%B0%D1%85%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B0"
+            class="calulator__btn"
+            >Выйти без оформления заказа</a
+          >
+        </div>
+      </form>
+    </section>
+
+    <!-- modal -->
+
+    <div
+      class="backdrop visually-hidden is-hidden"
+      id="modalFail"
+      data-modal
+      data-modal--good
+    >
+      <div class="modal">
+        <form action="" class="modal__form">
+          <div class="modal__circuse">
+            <svg class="modal__icon modal__icon-like">
+              <path
+                d="M29.164 10.472c-1.25-0.328-4.189-0.324-8.488-0.438 0.203-0.938 0.25-1.784 0.25-3.286 0-3.588-2.614-6.748-4.926-6.748-1.633 0-2.979 1.335-3 2.977-0.022 2.014-0.645 5.492-4 7.256-0.246 0.13-0.95 0.477-1.053 0.522l0.053 0.045c-0.525-0.453-1.253-0.8-2-0.8h-3c-1.654 0-3 1.346-3 3v16c0 1.654 1.346 3 3 3h3c1.19 0 2.186-0.719 2.668-1.727 0.012 0.004 0.033 0.010 0.047 0.012 0.066 0.018 0.144 0.037 0.239 0.062 0.018 0.005 0.027 0.007 0.046 0.012 0.576 0.143 1.685 0.408 4.055 0.953 0.508 0.116 3.192 0.688 5.972 0.688h5.467c1.666 0 2.867-0.641 3.582-1.928 0.010-0.020 0.24-0.469 0.428-1.076 0.141-0.457 0.193-1.104 0.023-1.76 1.074-0.738 1.42-1.854 1.645-2.58 0.377-1.191 0.264-2.086 0.002-2.727 0.604-0.57 1.119-1.439 1.336-2.766 0.135-0.822-0.010-1.668-0.389-2.372 0.566-0.636 0.824-1.436 0.854-2.176l0.012-0.209c0.007-0.131 0.013-0.212 0.013-0.5 0-1.263-0.875-2.874-2.836-3.434zM7 29c0 0.553-0.447 1-1 1h-3c-0.553 0-1-0.447-1-1v-16c0-0.553 0.447-1 1-1h3c0.553 0 1 0.447 1 1v16zM29.977 14.535c-0.020 0.494-0.227 1.465-1.977 1.465-1.5 0-2 0-2 0-0.277 0-0.5 0.224-0.5 0.5s0.223 0.5 0.5 0.5c0 0 0.438 0 1.938 0s1.697 1.244 1.6 1.844c-0.124 0.746-0.474 2.156-2.163 2.156-1.687 0-2.375 0-2.375 0-0.277 0-0.5 0.223-0.5 0.5 0 0.275 0.223 0.5 0.5 0.5 0 0 1.188 0 1.969 0 1.688 0 1.539 1.287 1.297 2.055-0.319 1.009-0.514 1.945-2.641 1.945-0.719 0-1.631 0-1.631 0-0.277 0-0.5 0.223-0.5 0.5 0 0.275 0.223 0.5 0.5 0.5 0 0 0.693 0 1.568 0 1.094 0 1.145 1.035 1.031 1.406-0.125 0.406-0.273 0.707-0.279 0.721-0.302 0.545-0.789 0.873-1.82 0.873h-5.467c-2.746 0-5.47-0.623-5.54-0.639-4.154-0.957-4.373-1.031-4.634-1.105 0 0-0.846-0.143-0.846-0.881l-0.007-13.812c0-0.469 0.299-0.893 0.794-1.042 0.062-0.024 0.146-0.050 0.206-0.075 4.568-1.892 5.959-6.040 6-9.446 0.006-0.479 0.375-1 1-1 1.057 0 2.926 2.122 2.926 4.748 0 2.371-0.096 2.781-0.926 5.252 10 0 9.93 0.144 10.812 0.375 1.094 0.313 1.188 1.219 1.188 1.531 0 0.343-0.010 0.293-0.023 0.629zM4.5 26c-0.828 0-1.5 0.672-1.5 1.5s0.672 1.5 1.5 1.5 1.5-0.672 1.5-1.5-0.672-1.5-1.5-1.5zM4.5 28c-0.275 0-0.5-0.225-0.5-0.5s0.225-0.5 0.5-0.5 0.5 0.225 0.5 0.5-0.225 0.5-0.5 0.5z"
+              ></path>
+            </svg>
+          </div>
+
+          <p class="modal__text">Спасибо, заявка отправлена.</p>
+          <p class="modal__text">
+            В ближайшее время наш менеджер свяжется с Вами.
+          </p>
+        </form>
+
+        <a
+          href="https://www.kod95.org/%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8-%D0%B8-%D1%86%D0%B5%D0%BD%D1%8B/%D1%87%D0%B8%D0%BF-%D0%BA%D0%B0%D1%80%D1%82%D0%B0-%D1%82%D0%B0%D1%85%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B0"
+          class="modal__submit"
+          >OK</a
+        >
+      </div>
+    </div>
+
+    <!-- modal end -->
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="./dist/js/script.min.js"></script>
+  </body>
+</html>

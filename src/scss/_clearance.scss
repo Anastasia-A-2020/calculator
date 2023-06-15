@@ -1,0 +1,13 @@
+.clearance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  font-size: 14px;
+
+  @media screen and (max-width: 479px) {
+    grid-template-columns: none;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -29,9 +29,11 @@
 .checkbox__style:hover input ~ .checkbox__checkmark {
   background-color: #eee;
 }
+
 .checkbox__style:hover input:checked ~ .checkbox__checkmark {
   background-color: #eee;
 }
+
 .checkbox__style .checkbox__checkmark {
   position: absolute;
   top: 1px;
@@ -42,6 +44,7 @@
   transition: background-color 0.25s ease;
   border-radius: 4px;
 }
+
 .checkbox__style .checkbox__checkmark.radio {
   border-radius: 50%;
   height: 20px;
@@ -58,6 +61,7 @@
     transform: translate(-30%, -50%);
   }
 }
+
 .checkbox__style .checkbox__checkmark:after {
   content: "";
   position: absolute;
@@ -80,4 +84,10 @@
 
 .checkbox__radio:not(:last-child) {
   margin-right: 15px;
+
+  @media screen and (max-width: 479px) {
+    .clearance & {
+      margin-right: 0;
+    }
+  }
 }

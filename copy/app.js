@@ -52,8 +52,7 @@ const refs = {
   formPolTel: document.querySelector("#polTelNumber"),
   formPesel: document.querySelector("#pesel"),
   formAddress: document.querySelector("#address"),
-  dateVisit: document.querySelector("#dateVisit"),
-  dateVisitInput: document.querySelector("#dateVisitInput"),
+
   btnSabmit: document.querySelector(".calulator__btn-sabmit"),
   payInOffice: document.querySelector("#payInOffice"),
   paymentBlock: document.querySelector("#paymentBlock"),
@@ -144,12 +143,12 @@ function onCalculatorFormSubmit(event) {
   const payMethod = [...refs.paymentMethod].find(el => el.checked);
   const paymentMethod = `${
     refs.payInOffice.classList.contains("visually-hidden")
-      ? `Подбор работодателя: ${payMethod.value}`
-      : `Способ оплаты: наличными в офисе <hr/> Подбор работодателя: ${payMethod.value}`
+      ? `Способ оплаты: ${payMethod.value}`
+      : `Способ оплаты: наличными в офиссе `
   }`;
   const personalSubmissionOfDocs = `${
     document.querySelector("#comeToOffice").checked
-      ? `Вы готовы лично приехать в Варшаву для подачи документов? ДА <br />`
+      ? `Вы готовы лично приехать в Варшаву для подачи документов? - ДА <br />`
       : " "
   }`;
   const delivery = [...document.querySelectorAll("[data-delivery]")].find(
@@ -180,16 +179,12 @@ function onCalculatorFormSubmit(event) {
     ? `Адресс: &#x20; ${refs.formAddress.value.trim()} <hr/>`
     : " ";
 
-  const dateVisitInOffice = ` ${
-    refs.dateVisitInput.value.trim() ? refs.dateVisitInput.value.trim() : ""
-  } <hr/>`;
-  console.log(dateVisitInOffice === "<hr/>");
-
   try {
     Email.send({
       // SecureToken: "ec88ce96-761e-461f-9b06-00ca22ca8bfb",
       // To: "infobynet@gmail.com",
       // From: "infobynet@gmail.com",
+
       SecureToken: "62858ea7-1d3a-4ba2-bc6a-1e5656d45026",
       To: "a-a2018@ukr.net",
       From: "a-a2018@ukr.net",
@@ -205,19 +200,14 @@ function onCalculatorFormSubmit(event) {
             Оформление: &#x20; ${deadlineForPaperwork}, <hr/>
             ${paymentMethod} <hr/>
             ${personalSubmissionOfDocs}
-            ${
-              dateVisitInOffice !== "<hr/>"
-                ? `Желаемая дата посещения офиса: ${dateVisitInOffice}`
-                : ""
-            }
             ${isBlick}
             Был ли чип раньше: &#x20; ${hasEarlyChip} <hr/>            
-            Способ доставки:  &#x20; ${delivery} <br />          
-            ${address}
-            Одновременно с картой мне нужно оформить: &#x20;  ${idCode95} &#x20; = &#x20; ${valueCode95}, <hr/>          
+            Способ доставки:  &#x20; ${delivery} <br />           
+            ${address} 
+            Одновременно с картой мне нужно оформить: &#x20;  ${idCode95} &#x20; = &#x20; ${valueCode95}, <hr/>           
             Предоплата: &#x20; ${prepayment} <br/>
             Доплата в момент получения: &#x20;  ${surcharge} <br/>
-            Итоговая стоимость: &#x20; ${totalSum} <hr/>            
+            Итоговая стоимость: &#x20; ${totalSum} <hr/>             
             Кто оплачивает: &#x20; ${whoPay} <hr/>
     `,
     }).then(data => removeClass(refs.backdrop, "visually-hidden", "is-hidden"));
@@ -253,14 +243,14 @@ function onChangeInputValue() {
     removeClass(refs.standartClearance, "visually-hidden", "is-hidden");
     addClass(refs.blickQuestion, "visually-hidden", "is-hidden");
     removeClass(refs.payInOffice, "visually-hidden", "is-hidden");
-    removeClass(refs.dateVisit, "visually-hidden", "is-hidden");
+    addClass(refs.paymentBlock, "visually-hidden", "is-hidden");
   }
 
   if (!visitInOffice) {
     refs.expeditedClearanceCheckbox.checked = true;
     addClass(refs.standartClearance, "visually-hidden", "is-hidden");
     addClass(refs.payInOffice, "visually-hidden", "is-hidden");
-    addClass(refs.dateVisit, "visually-hidden", "is-hidden");
+    removeClass(refs.paymentBlock, "visually-hidden", "is-hidden");
 
     if (refs.deliveryMethodsList.getInOfficeOption.selected) {
       removeClass(refs.hasBlik, "visually-hidden", "is-hidden");
@@ -418,16 +408,6 @@ function onOpenUserformBtnClick(e) {
   addClass(refs.openUserformBtn, "visually-hidden", "is-hidden");
 }
 
-///////////////////
-
-const nextBtn = document.querySelector("#nextBtn");
-const prevBtn = document.querySelector("#prevBtn");
-const formContent = document.querySelector("#content");
-
-nextBtn.addEventListener("click", e => {
-  formContent.style.transform = "translateX(-90%)";
-});
-
-prevBtn.addEventListener("click", e => {
-  formContent.style.transform = "translateX(0)";
-});
+function onHasEarlyChipClick(e) {
+  console.log(e.target.value);
+}
